@@ -1,19 +1,14 @@
 // -------------------------------------------------------
-// Requirements
-// -------------------------------------------------------
-
-import User from "../entities/user";
-
-// -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface BaseUserUseCases {
-    getUsers(): Promise<User[]>;
+interface AppUserModel {
+    email: string;
+    displayName: string;
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseUserUseCases;
+export type { AppUserModel };

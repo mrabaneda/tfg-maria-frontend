@@ -2,20 +2,23 @@
 // Requirements
 // -------------------------------------------------------
 
-import AppUser from "../entities/app_user";
+import AppUser from "@/src/core/entities/app_user";
+import { AppUserModel } from "../models/app_user.model";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface BaseAuthRepository {
-    signIn(email: string, password: string): Promise<AppUser>;
-    signOut(): Promise<void>;
-    getUserToken(): Promise<string>;
+class AppUserFactory {
+    appUserToModel(appUser: AppUser): AppUserModel {
+        return {
+            displayName: appUser.name,
+        };
+    }
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseAuthRepository;
+export { AppUserFactory };

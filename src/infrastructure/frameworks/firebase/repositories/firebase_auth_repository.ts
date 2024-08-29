@@ -6,7 +6,7 @@ import { AppUserDto } from "../dtos/app_user.dto";
 import AppUser from "@/src/core/entities/app_user";
 import { UserFactory } from "../factory/user.factory";
 import { firebaseAuthInstance } from "../firebase.service";
-import { UnauthorizedException } from "@/src/helpers/errors";
+import { ErrorException, UnauthorizedException } from "@/src/helpers/errors";
 import BaseAuthRepository from "@/src/core/repositories/auth_repository.abstract";
 import { signInWithEmailAndPassword, UserCredential, UserInfo } from "firebase/auth";
 
@@ -14,12 +14,13 @@ import { signInWithEmailAndPassword, UserCredential, UserInfo } from "firebase/a
 // Helpers
 // -------------------------------------------------------
 
-class HttpUserRepository implements BaseAuthRepository {
+class FirebaseAuthRepository implements BaseAuthRepository {
     private userFactory: UserFactory;
 
     constructor() {
         this.userFactory = new UserFactory();
     }
+
 
     async signIn(email: string, password: string): Promise<AppUser> {
         try {
@@ -43,9 +44,31 @@ class HttpUserRepository implements BaseAuthRepository {
     }
 
     async signOut(): Promise<void> {
-        await firebaseAuthInstance.signOut();
+        try {
+            await firebaseAuthInstance.signOut();
+        } catch (error: any) {
+            throw new ErrorException(error.message ?? JSON.stringify(error));
+        }
     }
 
+    async getUserToken(): Promise<string> {
+        try {
+            const currentUser = firebaseAuthInstance.currentUser;
+            if (!currentUser) {
+                throw new UnauthorizedException('No current user found.');
+            }
+
+            const token = await currentUser.getIdToken();
+            if (!token) {
+                throw new ErrorException('No token available.');
+            }
+
+            return token;
+        } catch (error: any) {
+            throw new ErrorException(error.message ?? JSON.stringify(error));
+
+        }
+    }
 
 }
 
@@ -53,4 +76,4 @@ class HttpUserRepository implements BaseAuthRepository {
 // Public Interface
 // -------------------------------------------------------
 
-export default HttpUserRepository;
+export default FirebaseAuthRepository;

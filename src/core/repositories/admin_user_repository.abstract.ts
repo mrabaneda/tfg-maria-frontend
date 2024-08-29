@@ -2,20 +2,18 @@
 // Requirements
 // -------------------------------------------------------
 
-import AppUser from "../entities/app_user";
+import AdminUser from "../entities/admin_user";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface BaseAuthRepository {
-    signIn(email: string, password: string): Promise<AppUser>;
-    signOut(): Promise<void>;
-    getUserToken(): Promise<string>;
+interface BaseAdminUserRepository {
+    getAllAdminUsers(): Promise<AdminUser[]>;
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseAuthRepository;
+export default BaseAdminUserRepository;

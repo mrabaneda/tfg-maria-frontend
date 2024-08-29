@@ -2,20 +2,18 @@
 // Requirements
 // -------------------------------------------------------
 
-import AppUser from "../entities/app_user";
+import SignInState from "../states/sign_in_state";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface BaseAuthRepository {
-    signIn(email: string, password: string): Promise<AppUser>;
-    signOut(): Promise<void>;
-    getUserToken(): Promise<string>;
-}
+const SignInController = (state: SignInState): SignInState => {
+    return state;
+};
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseAuthRepository;
+export default SignInController;

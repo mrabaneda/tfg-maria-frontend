@@ -2,20 +2,20 @@
 // Requirements
 // -------------------------------------------------------
 
-import AppUser from "../entities/app_user";
+import { AppUserModel } from "../models/app_user.model";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface BaseAuthRepository {
-    signIn(email: string, password: string): Promise<AppUser>;
-    signOut(): Promise<void>;
-    getUserToken(): Promise<string>;
+interface AuthState {
+    error: string | null;
+    loading: boolean;
+    user: AppUserModel | null;
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseAuthRepository;
+export type { AuthState };

@@ -8,14 +8,13 @@ import AppUser from "../entities/app_user";
 // Helpers
 // -------------------------------------------------------
 
-interface BaseAuthRepository {
+interface BaseAuthUseCases {
     signIn(email: string, password: string): Promise<AppUser>;
     signOut(): Promise<void>;
-    getUserToken(): Promise<string>;
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseAuthRepository;
+export default BaseAuthUseCases;
