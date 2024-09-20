@@ -3,10 +3,10 @@
 // --------------------------------
 
 enum PreferencesTypeEnum {
-  AUDIO = 'AUDIO',
-  TEXT = 'TEXT',
-  IMAGES = 'IMAGES',
-  NONE = 'NONE',
+  AUDIO = "AUDIO",
+  TEXT = "TEXT",
+  IMAGES = "IMAGES",
+  NONE = "NONE",
 }
 
 // --------------------------------
