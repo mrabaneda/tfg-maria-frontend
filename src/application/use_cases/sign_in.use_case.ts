@@ -9,7 +9,7 @@ import BaseAuthService from "@/src/core/ports/services/auth.service";
 // Helpers
 // -------------------------------------------------------
 
-class SignInUseCases {
+class SignInUseCase {
   constructor(private readonly authService: BaseAuthService) {}
 
   execute(email: string, password: string): Promise<AppUser> {
@@ -21,4 +21,4 @@ class SignInUseCases {
 // Public Interface
 // -------------------------------------------------------
 
-export default SignInUseCases;
+export default SignInUseCase;
