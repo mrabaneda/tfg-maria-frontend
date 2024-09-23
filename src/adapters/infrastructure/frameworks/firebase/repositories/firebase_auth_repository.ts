@@ -3,6 +3,7 @@
 // -------------------------------------------------------
 
 import { AppUserDto } from "../dtos/app_user.dto";
+import { Token } from "@/src/core/value_objects/types";
 import { AppUserFactory } from "../factory/app_user.factory";
 import AppUserEntity from "@/src/core/entities/app_user.entity";
 import { firebaseAuthInstance } from "../services/firebase.service";
@@ -26,10 +27,11 @@ class FirebaseAuthRepository implements BaseAuthRepository {
       if (!providerData) {
         throw new Error("No provider data found for the user.");
       }
+
       const appUserDto: AppUserDto = {
         uid: providerData.uid,
-        displayName: providerData.displayName || "",
-        email: providerData.email || "",
+        displayName: providerData.displayName ?? "",
+        email: providerData.email ?? "",
       };
 
       return AppUserFactory.appUserDtoToEntity(appUserDto);
@@ -46,7 +48,7 @@ class FirebaseAuthRepository implements BaseAuthRepository {
     }
   }
 
-  async getUserToken(): Promise<string> {
+  async getUserToken(): Promise<Token> {
     try {
       const currentUser = firebaseAuthInstance.currentUser;
       if (!currentUser) {
@@ -58,7 +60,7 @@ class FirebaseAuthRepository implements BaseAuthRepository {
         throw new ErrorException("No token available.");
       }
 
-      return token;
+      return token as Token;
     } catch (error: any) {
       throw new ErrorException(error.message ?? JSON.stringify(error));
     }

@@ -2,8 +2,8 @@
 // Requirements
 // -------------------------------------------------------
 
+import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // -------------------------------------------------------
 // Helpers
