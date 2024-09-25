@@ -2,13 +2,15 @@
 // Requirements
 // -------------------------------------------------------
 
-"use-client";
+"use client";
 
 import React from "react";
-import { AuthRepositoryProvider } from "@/src/adapters/infrastructure/di/repositories/auth_repository.context";
-import { RepositoryContextProvider } from "./repository.context";
+import { AuthContextProvider } from "./auth.context";
 import { ServiceContextProvider } from "./service.context";
+import { AuthConsumer } from "../containers/auth.consumer";
+import { RepositoryContextProvider } from "./repository.context";
 import { SignInUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
+import { SignInContextProvider } from "./sign_in.context";
 
 // -------------------------------------------------------
 // Models
@@ -22,14 +24,18 @@ interface AppContextProps {
 // Helpers
 // -------------------------------------------------------
 
-const AppContextProvider: React.FC<AppContextProps> = ({ children }) => {
+const AppContext: React.FC<AppContextProps> = ({ children }) => {
   return (
     <RepositoryContextProvider>
-        <ServiceContextProvider>
-            <SignInUseCaseProvider>
-                
-            </SignInUseCaseProvider>
-        </ServiceContextProvider>
+      <ServiceContextProvider>
+        <SignInUseCaseProvider>
+          <AuthContextProvider>
+            <SignInContextProvider>
+              <AuthConsumer>{children}</AuthConsumer>
+            </SignInContextProvider>
+          </AuthContextProvider>
+        </SignInUseCaseProvider>
+      </ServiceContextProvider>
     </RepositoryContextProvider>
   );
 };
@@ -38,4 +44,4 @@ const AppContextProvider: React.FC<AppContextProps> = ({ children }) => {
 // Public Interface
 // -------------------------------------------------------
 
-export { AppContextProvider };
+export { AppContext };

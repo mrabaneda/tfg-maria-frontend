@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-"use-client";
+"use client";
 
 import React, { useContext, useReducer } from "react";
 import { SignInState } from "../states/sign_in.state";

@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-"use-client";
+"use client";
 
 import React from "react";
 import { AuthRepositoryProvider } from "@/src/adapters/infrastructure/di/repositories/auth_repository.context";

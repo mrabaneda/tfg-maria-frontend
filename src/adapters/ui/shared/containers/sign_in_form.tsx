@@ -1,5 +1,15 @@
+// -------------------------------------------------------
+// Requirements
+// -------------------------------------------------------
+
+"use client";
+
 import React, { useState } from "react";
 import { useSignInContext } from "../contexts/sign_in.context";
+
+// -------------------------------------------------------
+// Helpers
+// -------------------------------------------------------
 
 const SignInForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -30,5 +40,9 @@ const SignInForm: React.FC = () => {
     </form>
   );
 };
+
+// -------------------------------------------------------
+// Public Interface
+// -------------------------------------------------------
 
 export default SignInForm;

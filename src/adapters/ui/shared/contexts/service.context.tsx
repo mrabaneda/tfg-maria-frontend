@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-"use-client";
+"use client";
 
 import React from "react";
 import { AuthServiceProvider } from "@/src/adapters/infrastructure/di/services/auth_service.context";

@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import type { Metadata } from "next";
-import "@/adapters/ui/shared/style/index.css";
+import { AppContext } from "../adapters/ui/shared/contexts/app.context";
 
 // -------------------------------------------------------
 // Models
@@ -25,7 +25,9 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
-      <body></body>
+      <body>
+        <AppContext>{children}</AppContext>
+      </body>
     </html>
   );
 };

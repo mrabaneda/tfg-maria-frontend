@@ -3,6 +3,8 @@
 // -------------------------------------------------------
 
 import { useEffect } from "react";
+import { useAuthContext } from "../contexts/auth.context";
+import { AppUserFactory } from "../factory/app_user.factory";
 import { useSignInContext } from "../contexts/sign_in.context";
 import { useSignInUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
 
@@ -12,8 +14,8 @@ import { useSignInUseCaseContext } from "@/src/adapters/infrastructure/di/use_ca
 
 const useSignIn = () => {
   const { signInState, setSignInError } = useSignInContext();
-
   const { signInUseCase } = useSignInUseCaseContext();
+  const { setAuthSuccess, setAuthError } = useAuthContext();
 
   useEffect(() => {
     let mounted = true;
@@ -23,11 +25,16 @@ const useSignIn = () => {
         .execute(signInState.email, signInState.password)
         .then((appUser) => {
           if (mounted) {
-            // TODO: manejar login exitoso
+            console.log(`EL USER EMAIL: ${appUser.email}`);
+            setAuthSuccess(AppUserFactory.appUserToModel(appUser));
+            console.log(`EL USER DE FIREBASE AMIGO: ${JSON.stringify(appUser)}`);
           }
         })
         .catch((err) => {
-          if (mounted) setSignInError(err.message);
+          if (mounted) {
+            setSignInError(err.message);
+            setAuthError(err.message);
+          }
         });
     }
 
