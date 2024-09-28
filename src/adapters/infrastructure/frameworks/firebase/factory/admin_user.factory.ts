@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import AdminUserEntity from "@/src/core/entities/admin_user.entity";
+import { AdminUserEntity } from "@/src/core/entities/admin_user.entity";
 import { AdminUserDto, AdminUserDtoScheme } from "../dtos/admin_user.dto";
 
 // -------------------------------------------------------
@@ -15,6 +15,7 @@ class AdminUserFactory {
       userId: adminUserdto[AdminUserDtoScheme.userId],
       email: adminUserdto[AdminUserDtoScheme.email],
       name: adminUserdto[AdminUserDtoScheme.name],
+      photoUrl: adminUserdto[AdminUserDtoScheme.photoUrl],
       createdAt: adminUserdto[AdminUserDtoScheme.createdAt],
       updatedAt: adminUserdto[AdminUserDtoScheme.updatedAt],
     };

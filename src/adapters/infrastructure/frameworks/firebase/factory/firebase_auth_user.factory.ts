@@ -2,20 +2,20 @@
 // Requirements
 // -------------------------------------------------------
 
+import { User } from "firebase/auth";
 import { AppUserEntity } from "@/src/core/entities/app_user.entity";
-import { AppUserDto, AppUserDtoScheme } from "../dtos/app_user.dto";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class AppUserFactory {
-  static appUserDtoToEntity(appUserDto: AppUserDto): AppUserEntity {
+class FirebaseAuthUserFactory {
+  static firebaseAuthUserToEntity(firebaseAuthUser: User): AppUserEntity {
     return {
-      userId: appUserDto[AppUserDtoScheme.uid],
-      photoUrl: appUserDto[AppUserDtoScheme.photoUrl],
-      name: appUserDto[AppUserDtoScheme.displayName],
-      email: appUserDto[AppUserDtoScheme.email],
+      userId: firebaseAuthUser.uid,
+      email: firebaseAuthUser.email!,
+      name: firebaseAuthUser.displayName!,
+      photoUrl: firebaseAuthUser.photoURL,
     };
   }
 }
@@ -24,4 +24,4 @@ class AppUserFactory {
 // Public Interface
 // -------------------------------------------------------
 
-export { AppUserFactory };
+export { FirebaseAuthUserFactory };

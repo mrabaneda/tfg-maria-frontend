@@ -2,20 +2,27 @@
 // Requirements
 // -------------------------------------------------------
 
-import AppUserViewModel from "../models/app_user.model";
+import { AppUserViewModel } from "../models/app_user.model";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface AuthState {
-  error: string | null;
-  loading: boolean;
-  user: AppUserViewModel | null;
+enum AuthStateEnum {
+  authenticated = "Authenticated",
+  anonymous = "Anonymous",
+  authenticating = "Authenticating",
 }
+
+type AuthState =
+  | { status: AuthStateEnum.authenticated; appUser: AppUserViewModel }
+  | { status: AuthStateEnum.anonymous }
+  | { status: AuthStateEnum.authenticating };
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
+
+export { AuthStateEnum };
 
 export type { AuthState };

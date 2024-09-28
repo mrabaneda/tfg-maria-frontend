@@ -10,14 +10,14 @@ import { UID } from "../../value_objects/types";
 // Helpers
 // -------------------------------------------------------
 
-abstract class BaseAdminUserService {
-  abstract getAdminUsers(): Promise<AdminUserEntity[]>;
-  abstract createAdminUser(createModel: AdminUserCreateModel): Promise<void>;
-  abstract deleteAdminUser(uid: UID): Promise<void>;
+abstract class BaseAdminUserRepository {
+  abstract get(): Promise<AdminUserEntity[]>;
+  abstract create(createModel: AdminUserCreateModel): Promise<void>;
+  abstract delete(uid: UID): Promise<void>;
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export { BaseAdminUserService };
+export default BaseAdminUserRepository;

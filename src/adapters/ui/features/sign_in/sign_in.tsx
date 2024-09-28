@@ -2,18 +2,25 @@
 // Requirements
 // -------------------------------------------------------
 
-import AdminUserEntity from "../../entities/admin_user.entity";
+"use client";
+
+import { SignInUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
+import SignInForm from "./containers/sign_in_form";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-abstract class BaseAdminUserRepository {
-  abstract get(): Promise<AdminUserEntity[]>;
-}
+const SignIn: React.FC = () => {
+  return (
+    <SignInUseCaseProvider>
+      <SignInForm />
+    </SignInUseCaseProvider>
+  );
+};
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseAdminUserRepository;
+export default SignIn;

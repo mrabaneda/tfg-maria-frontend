@@ -2,33 +2,23 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AuthState } from "../states/auth.state";
-import AppUserViewModel from "../models/app_user.model";
+import { AuthState, AuthStateEnum } from "../states/auth.state";
+import { AppUserViewModel } from "../models/app_user.model";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-type AuthAction = { type: "AUTH_SUCCESS"; appUser: AppUserViewModel } | { type: "AUTH_ERROR"; error: string } | { type: "SIGN_OUT" };
+type AuthAction = { type: "Authenticated"; appUser: AppUserViewModel } | { type: "Authenticating" } | { type: "Anonymous" };
 
 const AuthController = (state: AuthState, action: AuthAction): AuthState => {
   switch (action.type) {
-    case "AUTH_SUCCESS":
-      return {
-        ...state,
-        user: action.appUser,
-        error: null,
-      };
-    case "AUTH_ERROR":
-      return {
-        ...state,
-        error: action.error,
-      };
-    case "SIGN_OUT":
-      return {
-        ...state,
-        user: null,
-      };
+    case "Authenticated":
+      return { status: AuthStateEnum.authenticated, appUser: action.appUser };
+    case "Authenticating":
+      return { status: AuthStateEnum.authenticating };
+    case "Anonymous":
+      return { status: AuthStateEnum.anonymous };
     default:
       return state;
   }

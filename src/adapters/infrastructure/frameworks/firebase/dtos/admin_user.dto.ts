@@ -13,6 +13,7 @@ interface AdminUserDto {
   userId: UID;
   name: string;
   email: string;
+  photoUrl: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -23,6 +24,7 @@ const AdminUserDtoScheme: Scheme<AdminUserDto> = {
   email: "email",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  photoUrl: "photoUrl",
 };
 
 // -------------------------------------------------------

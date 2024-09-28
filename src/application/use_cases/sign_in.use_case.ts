@@ -2,8 +2,8 @@
 // Requirements
 // -------------------------------------------------------
 
-import AppUser from "@/src/core/entities/app_user.entity";
-import BaseAuthService from "@/src/core/ports/services/auth.service";
+import { AppUserEntity } from "@/src/core/entities/app_user.entity";
+import { BaseAuthService } from "@/src/core/ports/services/auth.service";
 
 // -------------------------------------------------------
 // Helpers
@@ -12,7 +12,7 @@ import BaseAuthService from "@/src/core/ports/services/auth.service";
 class SignInUseCase {
   constructor(private readonly authService: BaseAuthService) {}
 
-  execute(email: string, password: string): Promise<AppUser> {
+  execute(email: string, password: string): Promise<AppUserEntity> {
     return this.authService.signIn(email, password);
   }
 }

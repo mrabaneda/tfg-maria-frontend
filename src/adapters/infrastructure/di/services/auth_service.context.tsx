@@ -6,7 +6,7 @@
 
 import React from "react";
 import { useContext } from "react";
-import BaseAuthService from "@/src/core/ports/services/auth.service";
+import { BaseAuthService } from "@/src/core/ports/services/auth.service";
 import { AuthService } from "@/src/application/services/auth.service";
 import { useAuthRepositoryContext } from "../repositories/auth_repository.context";
 
@@ -33,9 +33,9 @@ const AuthServiceContext = React.createContext<AuthServiceContextValue>({} as Au
 const AuthServiceProvider: React.FC<AuthServiceProviderProps> = ({ children }) => {
   const { authRepository } = useAuthRepositoryContext();
 
-  const AuthServiceContextValue: AuthServiceContextValue = { authService: new AuthService(authRepository) };
+  const authServiceContextValue: AuthServiceContextValue = { authService: new AuthService(authRepository) };
 
-  return <AuthServiceContext.Provider value={AuthServiceContextValue}>{children}</AuthServiceContext.Provider>;
+  return <AuthServiceContext.Provider value={authServiceContextValue}>{children}</AuthServiceContext.Provider>;
 };
 
 // -------------------------------------------------------

@@ -4,10 +4,11 @@
   "private": true,
   "author": "MRABANEDA",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 3001",
+    "lint": "next lint",
+    "deploy": ""
   },
   "dependencies": {
     "firebase": "^10.12.5",

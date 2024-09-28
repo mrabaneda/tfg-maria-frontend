@@ -3,9 +3,9 @@
 // -------------------------------------------------------
 
 import { Token } from "@/src/core/value_objects/types";
-import AppUserEntity from "@/src/core/entities/app_user.entity";
-import BaseAuthService from "@/src/core/ports/services/auth.service";
-import BaseAuthRepository from "@/src/core/ports/repositories/auth_repository.abstract";
+import { BaseAuthRepository } from "@/src/core/ports/repositories/auth_repository.abstract";
+import { AppUserEntity } from "@/src/core/entities/app_user.entity";
+import { BaseAuthService } from "@/src/core/ports/services/auth.service";
 
 // -------------------------------------------------------
 // Helpers
@@ -24,6 +24,10 @@ class AuthService implements BaseAuthService {
 
   getUserToken(): Promise<Token> {
     return this.authRepository.getUserToken();
+  }
+
+  onAuthStateChanges(cb: (user: AppUserEntity | null) => void): () => void {
+    return this.authRepository.onAuthStateChanges(cb);
   }
 }
 

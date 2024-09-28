@@ -12,10 +12,11 @@ interface AppUserEntity {
   userId: UID;
   name: string;
   email: string;
+  photoUrl: string | null;
 }
 
 // --------------------------------
 // Public Interface
 // --------------------------------
 
-export default AppUserEntity;
+export type { AppUserEntity };

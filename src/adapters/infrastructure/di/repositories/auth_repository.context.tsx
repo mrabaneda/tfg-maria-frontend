@@ -6,8 +6,8 @@
 
 import React from "react";
 import { useContext } from "react";
-import BaseAuthRepository from "@/src/core/ports/repositories/auth_repository.abstract";
-import FirebaseAuthRepository from "../../frameworks/firebase/repositories/firebase_auth_repository";
+import { BaseAuthRepository } from "@/src/core/ports/repositories/auth_repository.abstract";
+import { FirebaseAuthRepository } from "../../frameworks/firebase/repositories/firebase_auth_repository";
 
 // -------------------------------------------------------
 // Models

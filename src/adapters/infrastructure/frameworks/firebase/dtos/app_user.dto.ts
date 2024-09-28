@@ -12,6 +12,7 @@ import { UID } from "@/src/core/value_objects/types";
 interface AppUserDto {
   uid: UID;
   displayName: string;
+  photoUrl: string | null;
   email: string;
 }
 
@@ -19,6 +20,7 @@ const AppUserDtoScheme: Scheme<AppUserDto> = {
   uid: "uid",
   displayName: "displayName",
   email: "email",
+  photoUrl: "photoUrl",
 };
 
 // -------------------------------------------------------

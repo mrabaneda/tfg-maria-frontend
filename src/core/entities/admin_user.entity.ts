@@ -12,6 +12,7 @@ interface AdminUserEntity {
   userId: UID;
   name: string;
   email: string;
+  photoUrl: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -20,4 +21,4 @@ interface AdminUserEntity {
 // Public Interface
 // --------------------------------
 
-export default AdminUserEntity;
+export type { AdminUserEntity };

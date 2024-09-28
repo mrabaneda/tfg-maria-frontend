@@ -4,10 +4,11 @@
 
 "use client";
 
-import { useContext } from "react";
-import { LoadingScreen } from "../components/loading_screen";
+import { useAuthContext } from "../contexts/auth.context";
 import { ErrorScreen } from "../components/error_screen";
-import { AuthContext } from "../contexts/auth.context";
+import { LoadingScreen } from "../components/loading_screen";
+import { AuthStateEnum } from "../states/auth.state";
+import SignIn from "../../features/sign_in/sign_in";
 
 // -------------------------------------------------------
 // Model
@@ -22,16 +23,16 @@ interface AuthConsumerProps {
 // -------------------------------------------------------
 
 const AuthConsumer: React.FC<AuthConsumerProps> = ({ children }) => {
-  const { authState } = useContext(AuthContext);
+  const { authState } = useAuthContext();
 
-  return authState.loading ? (
+  return authState.status === AuthStateEnum.authenticating ? (
     <LoadingScreen />
-  ) : authState.error ? (
-    <ErrorScreen message={authState.error} title="Error" />
+  ) : authState.status === AuthStateEnum.authenticated ? (
+    <main className="bg-white p-4">{children}</main>
+  ) : authState.status === AuthStateEnum.anonymous ? (
+    <SignIn></SignIn>
   ) : (
-    <>
-      <main className="bg-white p-4">{children}</main>
-    </>
+    <ErrorScreen />
   );
 };
 

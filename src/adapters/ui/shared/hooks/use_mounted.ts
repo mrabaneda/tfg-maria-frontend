@@ -2,26 +2,29 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AppUserEntity } from "@/src/core/entities/app_user.entity";
-import { AppUserViewModel } from "../models/app_user.model";
+import { useCallback, useEffect, useRef } from "react";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class AppUserFactory {
-  static appUserToModel(appUser: AppUserEntity): AppUserViewModel {
-    return {
-      uid: appUser.userId,
-      email: appUser.email,
-      name: appUser.name,
-      photoUrl: appUser.photoUrl,
+const useMounted = () => {
+  const mountedRef = useRef(false);
+
+  const isMounted = useCallback(() => mountedRef.current, [mountedRef]);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
     };
-  }
-}
+  }, []);
+
+  return isMounted;
+};
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export { AppUserFactory };
+export { useMounted };

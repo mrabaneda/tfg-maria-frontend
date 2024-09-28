@@ -4,23 +4,19 @@
 
 "use client";
 
+import React, { useContext } from "react";
 import { AuthState } from "../states/auth.state";
-import React, { useContext, useReducer } from "react";
-import AppUserViewModel from "../models/app_user.model";
-import { AuthController } from "../controllers/auth.controller";
+import { useAuth } from "../hooks/use_auth.hook";
 
 // -------------------------------------------------------
 // Models
 // -------------------------------------------------------
 
-interface AuthValue {
+interface AuthContextValue {
   authState: AuthState;
-  setAuthSuccess: (appUser: AppUserViewModel) => void;
-  setAuthError: (error: string) => void;
-  setSignOut: () => void;
 }
 
-interface AuthProps {
+interface AuthContextProps {
   children: React.ReactNode;
 }
 
@@ -28,23 +24,16 @@ interface AuthProps {
 // Helpers
 // -------------------------------------------------------
 
-const AuthContext = React.createContext<AuthValue>({} as AuthValue);
+const AuthContext = React.createContext<AuthContextValue>({} as AuthContextValue);
 
-const AuthContextProvider: React.FC<AuthProps> = ({ children }) => {
-  const [authState, dispatchAuth] = useReducer(AuthController, {
-    user: null,
-    error: null,
-    loading: false,
-  } satisfies AuthState);
+const AuthContextProvider: React.FC<AuthContextProps> = ({ children }) => {
+  const { authState } = useAuth();
 
-  const authValue: AuthValue = {
+  const authContextValue: AuthContextValue = {
     authState: authState,
-    setAuthSuccess: (appUser) => dispatchAuth({ type: "AUTH_SUCCESS", appUser: appUser }),
-    setAuthError: (error) => dispatchAuth({ type: "AUTH_ERROR", error: error }),
-    setSignOut: () => dispatchAuth({ type: "SIGN_OUT" }),
   };
 
-  return <AuthContext.Provider value={authValue}> {children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={authContextValue}> {children}</AuthContext.Provider>;
 };
 
 const useAuthContext = () => {

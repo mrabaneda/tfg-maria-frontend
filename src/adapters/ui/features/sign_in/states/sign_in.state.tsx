@@ -3,10 +3,9 @@
 // -------------------------------------------------------
 
 interface SignInState {
-  email: string | null;
-  password: string | null;
-  signingIn: boolean;
-  signInError?: string;
+  email: string;
+  password: string;
+  isLoading: boolean;
 }
 
 // -------------------------------------------------------

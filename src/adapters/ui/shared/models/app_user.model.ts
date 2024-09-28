@@ -1,15 +1,22 @@
 // --------------------------------
+// Requirements
+// --------------------------------
+
+import { UID } from "@/src/core/value_objects/types";
+
+// --------------------------------
 // Helpers
 // --------------------------------
 
 interface AppUserViewModel {
+  uid: UID;
   name: string;
   email: string;
-  // TODO: add photo
+  photoUrl: string | null;
 }
 
 // --------------------------------
 // Public Interface
 // --------------------------------
 
-export default AppUserViewModel;
+export type { AppUserViewModel };

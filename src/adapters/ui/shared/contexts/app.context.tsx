@@ -9,8 +9,7 @@ import { AuthContextProvider } from "./auth.context";
 import { ServiceContextProvider } from "./service.context";
 import { AuthConsumer } from "../containers/auth.consumer";
 import { RepositoryContextProvider } from "./repository.context";
-import { SignInUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
-import { SignInContextProvider } from "./sign_in.context";
+import { AuthStateChangesUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/auth_state_changes_use_case.context";
 
 // -------------------------------------------------------
 // Models
@@ -28,13 +27,11 @@ const AppContext: React.FC<AppContextProps> = ({ children }) => {
   return (
     <RepositoryContextProvider>
       <ServiceContextProvider>
-        <SignInUseCaseProvider>
+        <AuthStateChangesUseCaseProvider>
           <AuthContextProvider>
-            <SignInContextProvider>
-              <AuthConsumer>{children}</AuthConsumer>
-            </SignInContextProvider>
+            <AuthConsumer>{children}</AuthConsumer>
           </AuthContextProvider>
-        </SignInUseCaseProvider>
+        </AuthStateChangesUseCaseProvider>
       </ServiceContextProvider>
     </RepositoryContextProvider>
   );
