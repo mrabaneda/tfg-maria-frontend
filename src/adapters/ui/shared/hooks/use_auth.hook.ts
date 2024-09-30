@@ -21,13 +21,18 @@ const useAuth = () => {
   const { authStateChangesUseCase } = useAuthStateChangesUseCaseContext();
 
   useEffect(() => {
-    authStateChangesUseCase.execute((user) => {
+    const suscription = authStateChangesUseCase.execute((user) => {
       if (!user) {
         if (isMounted()) dispatch({ type: "Anonymous" });
         return;
       }
+
       dispatch({ type: "Authenticated", appUser: AppUserFactory.appUserToModel(user) });
     });
+
+    return () => {
+      suscription();
+    };
   }, [isMounted, authStateChangesUseCase]);
 
   return { authState };
