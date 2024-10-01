@@ -9,7 +9,7 @@ import UserEntity from "../../entities/user.entity";
 // -------------------------------------------------------
 
 abstract class BaseUserService {
-  abstract get(): Promise<UserEntity[]>;
+  abstract getUsers(): Promise<UserEntity[]>;
 }
 
 // -------------------------------------------------------
