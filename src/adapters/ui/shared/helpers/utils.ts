@@ -2,11 +2,10 @@
 // Helpers
 // -------------------------------------------------------
 
-// TODO: move
-type Scheme<T> = { [SP in keyof T]: SP };
+const combineClasses = (...classes: string[]): string => classes.filter(Boolean).join(" ");
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export type { Scheme };
+export { combineClasses };
