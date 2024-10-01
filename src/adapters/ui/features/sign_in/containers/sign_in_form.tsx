@@ -4,13 +4,14 @@
 
 "use client";
 
+import { FC } from "react";
 import { useSignIn } from "../hooks/use_sign_in.hook";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-const SignInForm: React.FC = () => {
+const SignInForm: FC = () => {
   const {
     signInState: { email, isLoading, password },
     setEmail,
@@ -19,7 +20,7 @@ const SignInForm: React.FC = () => {
   } = useSignIn();
 
   return (
-    <div>
+    <div className="w-full max-w-[350px] bg-white shadow h-[583px] flex flex-col align-center justify-center relative rounded-xl">
       <div>
         <label>Email: </label>
         <input type="email" id="email" name="email" defaultValue={email} onChange={setEmail} required disabled={isLoading} />

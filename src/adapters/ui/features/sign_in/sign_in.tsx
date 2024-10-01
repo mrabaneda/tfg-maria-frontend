@@ -5,7 +5,7 @@
 "use client";
 
 import { SignInUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
-import SignInForm from "./containers/sign_in_form";
+import SignInPage from "./components/sign_in_page";
 
 // -------------------------------------------------------
 // Helpers
@@ -14,7 +14,7 @@ import SignInForm from "./containers/sign_in_form";
 const SignIn: React.FC = () => {
   return (
     <SignInUseCaseProvider>
-      <SignInForm />
+      <SignInPage />
     </SignInUseCaseProvider>
   );
 };
