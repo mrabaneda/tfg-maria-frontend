@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.primary-color {
+  color: rgb(196, 225, 222);
+}
+
+.secondary-color {
+  color: #68c0b8;
+}
+
+.btn-primary {
+  background-color: #68c0b8;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #569e8e;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #68c0b8;
+  border: 1px solid #68c0b8;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #68c0b8;
+  color: #fff;
+}
+
+dialog::backdrop {
+  background: linear-gradient(to left, #68c0b8, #569e8e);
+}
