@@ -4,9 +4,7 @@
 
 "use client";
 
-import React from "react";
-import { useContext } from "react";
-import AuthStateChanges from "@/src/application/use_cases/sign_in.use_case";
+import { createContext, FC, useContext } from "react";
 import { useAuthServiceContext } from "../services/auth_service.context";
 import { AuthStateChangesUseCase } from "@/src/application/use_cases/auth_state_changes.use_case";
 
@@ -28,9 +26,9 @@ interface AuthStateChangesUseCaseProviderProps {
 
 const useAuthStateChangesUseCaseContext = () => useContext(AuthStateChangesUseCaseContext);
 
-const AuthStateChangesUseCaseContext = React.createContext<AuthStateChangesUseCaseContextValue>({} as AuthStateChangesUseCaseContextValue);
+const AuthStateChangesUseCaseContext = createContext<AuthStateChangesUseCaseContextValue>({} as AuthStateChangesUseCaseContextValue);
 
-const AuthStateChangesUseCaseProvider: React.FC<AuthStateChangesUseCaseProviderProps> = ({ children }) => {
+const AuthStateChangesUseCaseProvider: FC<AuthStateChangesUseCaseProviderProps> = ({ children }) => {
   const { authService } = useAuthServiceContext();
 
   const authStateChangesContextValue: AuthStateChangesUseCaseContextValue = { authStateChangesUseCase: new AuthStateChangesUseCase(authService) };
