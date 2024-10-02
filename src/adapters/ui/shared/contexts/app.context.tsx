@@ -4,7 +4,7 @@
 
 "use client";
 
-import React from "react";
+import { FC } from "react";
 import { AuthContextProvider } from "./auth.context";
 import { ServiceContextProvider } from "./service.context";
 import { AuthConsumer } from "../containers/auth.consumer";
@@ -23,7 +23,7 @@ interface AppContextProps {
 // Helpers
 // -------------------------------------------------------
 
-const AppContext: React.FC<AppContextProps> = ({ children }) => {
+const AppContext: FC<AppContextProps> = ({ children }) => {
   return (
     <RepositoryContextProvider>
       <ServiceContextProvider>

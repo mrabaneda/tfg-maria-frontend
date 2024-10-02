@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import { ChangeEventHandler, MouseEventHandler, useReducer } from "react";
+import { ChangeEventHandler, useReducer } from "react";
 import { useSignInUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
 import { SignInController } from "../controllers/sign_in.controller";
 import { SignInState } from "../states/sign_in.state";
@@ -23,7 +23,7 @@ const useSignIn = () => {
 
   const { signInUseCase } = useSignInUseCaseContext();
 
-  const setEmail: ChangeEventHandler<HTMLInputElement> = (event) => {    
+  const setEmail: ChangeEventHandler<HTMLInputElement> = (event) => {
     if (isMounted()) dispatch({ type: "SET_EMAIL", email: event.target.value });
   };
 
@@ -31,13 +31,11 @@ const useSignIn = () => {
     if (isMounted()) dispatch({ type: "SET_PASSWORD", password: event.target.value });
   };
 
-  const handleSignIn: MouseEventHandler<HTMLButtonElement> = async () => {
+  const handleSignIn = async () => {
     try {
-      //e.preventDefault();
-
       if (!isMounted()) return;
 
-      // TODO: Validaciones en codiciones, rico pareado (LOS TRIM!!!!!) 
+      // TODO: Validaciones en codiciones, rico pareado (LOS TRIM!!!!!)
       if (!signInState.email) {
         alert("Debe introducir un email");
         return;

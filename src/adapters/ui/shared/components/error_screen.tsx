@@ -4,7 +4,7 @@
 
 "use client";
 
-import React from "react";
+import { FC } from "react";
 import Image from "next/image";
 import errorImage from "../../shared/assets/error_404_cat.jpg";
 
@@ -21,7 +21,7 @@ type ErrorScreenProps = {
 // Helpers
 // -------------------------------------------------------
 
-const ErrorScreen: React.FC<ErrorScreenProps> = ({ title, message }) => {
+const ErrorScreen: FC<ErrorScreenProps> = ({ title, message }) => {
   return (
     <div className="flex flex-col justify-start items-center h-screen container mx-auto">
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20 px-20 sm:px-10">{title ?? "Algo salió mal"}</h1>

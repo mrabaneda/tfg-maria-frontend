@@ -4,7 +4,7 @@
 
 "use client";
 
-import React from "react";
+import { ReactNode, FC } from "react";
 import { AuthRepositoryProvider } from "@/src/adapters/infrastructure/di/repositories/auth_repository.context";
 
 // -------------------------------------------------------
@@ -12,14 +12,14 @@ import { AuthRepositoryProvider } from "@/src/adapters/infrastructure/di/reposit
 // -------------------------------------------------------
 
 interface RepositoryContextProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-const RepositoryContextProvider: React.FC<RepositoryContextProps> = ({ children }) => {
+const RepositoryContextProvider: FC<RepositoryContextProps> = ({ children }) => {
   return <AuthRepositoryProvider>{children}</AuthRepositoryProvider>;
 };
 

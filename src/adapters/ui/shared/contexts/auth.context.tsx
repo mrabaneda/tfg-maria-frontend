@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { useContext } from "react";
+import { createContext, FC, useContext } from "react";
 import { AuthState } from "../states/auth.state";
 import { useAuth } from "../hooks/use_auth.hook";
 
@@ -24,9 +24,9 @@ interface AuthContextProps {
 // Helpers
 // -------------------------------------------------------
 
-const AuthContext = React.createContext<AuthContextValue>({} as AuthContextValue);
+const AuthContext = createContext<AuthContextValue>({} as AuthContextValue);
 
-const AuthContextProvider: React.FC<AuthContextProps> = ({ children }) => {
+const AuthContextProvider: FC<AuthContextProps> = ({ children }) => {
   const { authState } = useAuth();
 
   const authContextValue: AuthContextValue = {

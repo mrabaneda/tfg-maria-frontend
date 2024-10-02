@@ -4,7 +4,7 @@
 
 "use client";
 
-import React from "react";
+import { ReactNode, FC } from "react";
 import { AuthServiceProvider } from "@/src/adapters/infrastructure/di/services/auth_service.context";
 
 // -------------------------------------------------------
@@ -12,14 +12,14 @@ import { AuthServiceProvider } from "@/src/adapters/infrastructure/di/services/a
 // -------------------------------------------------------
 
 interface ServiceContextProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-const ServiceContextProvider: React.FC<ServiceContextProviderProps> = ({ children }) => {
+const ServiceContextProvider: FC<ServiceContextProviderProps> = ({ children }) => {
   return <AuthServiceProvider>{children}</AuthServiceProvider>;
 };
 

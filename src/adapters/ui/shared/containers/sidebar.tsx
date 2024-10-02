@@ -19,6 +19,7 @@ import { LogoutIcon } from "../components/icons/logout.icon";
 
 const Sidebar: FC = () => {
   const { authState } = useAuthContext();
+
   if (authState.status == AuthStateEnum.authenticated) {
     return (
       <div className="flex flex-col justify-between h-screen bg-[#FFE9A7] p-8 w-1/5">

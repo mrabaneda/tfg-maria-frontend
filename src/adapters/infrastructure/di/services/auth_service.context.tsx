@@ -4,7 +4,7 @@
 
 "use client";
 
-import React from "react";
+import { createContext, FC } from "react";
 import { useContext } from "react";
 import { BaseAuthService } from "@/src/core/ports/services/auth.service";
 import { AuthService } from "@/src/application/services/auth.service";
@@ -28,9 +28,9 @@ interface AuthServiceProviderProps {
 
 const useAuthServiceContext = () => useContext(AuthServiceContext);
 
-const AuthServiceContext = React.createContext<AuthServiceContextValue>({} as AuthServiceContextValue);
+const AuthServiceContext = createContext<AuthServiceContextValue>({} as AuthServiceContextValue);
 
-const AuthServiceProvider: React.FC<AuthServiceProviderProps> = ({ children }) => {
+const AuthServiceProvider: FC<AuthServiceProviderProps> = ({ children }) => {
   const { authRepository } = useAuthRepositoryContext();
 
   const authServiceContextValue: AuthServiceContextValue = { authService: new AuthService(authRepository) };
