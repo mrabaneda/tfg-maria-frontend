@@ -16,14 +16,14 @@ import SignInForm from "../containers/sign_in_form";
 
 const SignInPage: FC = () => {
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full min-h-screen relative flex justify-center align-center">
       <div className="absolute w-full h-full top-0 left-0 z-0">
         <Image className="object-cover w-full h-full" src={signInBackground} alt="Sign in background" />
       </div>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-[167px] h-full px-5">
-            <SignInWelcome />
-            <SignInForm />
-        </div>
+      <div className="flex min-h-screen w-full flex-col md:flex-row items-center justify-center md:gap-[167px] gap-[30px] h-full py-[100px] px-5 relative z-1">
+          <SignInWelcome />
+          <SignInForm />
+      </div>
     </div>
   );
 };
