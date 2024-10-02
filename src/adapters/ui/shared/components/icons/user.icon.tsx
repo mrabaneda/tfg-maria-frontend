@@ -18,18 +18,25 @@ interface UserIconProps {
 // Helpers
 // -------------------------------------------------------
 
-// TODO: combine classes hover color
+// TODO: revisar size
 const UserIcon: FC<UserIconProps> = ({ color = "black", classNames = "h-6 w-6" }) => {
   return (
     <svg viewBox="0 0 64 64" fill="none" className={classNames}>
-      <circle className="group-hover:stroke-white" cx="32" cy="22" r="10" stroke={color} strokeWidth={4} />
       <path
-        className="group-hover:stroke-white"
-        d="M16 46C16 36.0589 24.0589 28 32 28C39.9411 28 48 36.0589 48 46"
+        fill="none"
         stroke={color}
-        strokeWidth={4}
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth={4}
+        d="M32 32C38.6274 32 44 26.6274 44 20C44 13.3726 38.6274 8 32 8C25.3726 8 20 13.3726 20 20C20 26.6274 25.3726 32 32 32Z"
+      />
+      <path
+        fill="none"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={4}
+        d="M12 56C12 47.1634 19.1634 40 28 40H36C44.8366 40 52 47.1634 52 56"
       />
     </svg>
   );
