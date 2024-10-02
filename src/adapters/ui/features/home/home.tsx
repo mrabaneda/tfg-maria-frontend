@@ -4,14 +4,16 @@
 
 "use client";
 
+import HomeMenuItem from "./components/home_menu_item";
+
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <h1>Welcome to HOME!</h1>
+    <div className="flex gap-[30px]">
+      <HomeMenuItem title="Usuarios Administradores" />
     </div>
   );
 };
