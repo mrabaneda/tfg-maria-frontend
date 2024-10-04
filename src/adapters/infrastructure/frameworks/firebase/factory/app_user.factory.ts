@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AppUserEntity } from "@/src/core/entities/app_user.entity";
+import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
 import { AppUserDto, AppUserDtoScheme } from "../dtos/app_user.dto";
 
 // -------------------------------------------------------
@@ -11,12 +11,12 @@ import { AppUserDto, AppUserDtoScheme } from "../dtos/app_user.dto";
 
 class AppUserFactory {
   static appUserDtoToEntity(appUserDto: AppUserDto): AppUserEntity {
-    return {
-      userId: appUserDto[AppUserDtoScheme.uid],
-      photoUrl: appUserDto[AppUserDtoScheme.photoUrl],
-      name: appUserDto[AppUserDtoScheme.displayName],
-      email: appUserDto[AppUserDtoScheme.email],
-    };
+    return new AppUserEntity(
+      appUserDto[AppUserDtoScheme.uid],
+      appUserDto[AppUserDtoScheme.displayName],
+      appUserDto[AppUserDtoScheme.email],
+      appUserDto[AppUserDtoScheme.photoUrl]
+    );
   }
 }
 

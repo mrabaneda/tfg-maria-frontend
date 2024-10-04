@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AppUserEntity } from "@/src/core/entities/app_user.entity";
+import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
 import { AppUserViewModel } from "../models/app_user.model";
 
 // -------------------------------------------------------

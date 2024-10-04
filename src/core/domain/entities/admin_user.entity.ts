@@ -8,12 +8,14 @@ import { UID } from "../value_objects/types";
 // Helpers
 // --------------------------------
 
-class AppUserEntity {
+class AdminUserEntity {
   constructor(
     private readonly _userId: UID,
     private readonly _name: string,
     private readonly _email: string,
-    private readonly _photoUrl: string | null
+    private readonly _photoUrl: string | null,
+    private readonly _createdAt: Date,
+    private readonly _updatedAt: Date
   ) {
     if (!this._userId || this._userId.trim().length === 0) {
       throw new Error("AdminUserEntity: userId is required and cannot be empty.");
@@ -23,6 +25,12 @@ class AppUserEntity {
     }
     if (!this._email || this._email.trim().length === 0) {
       throw new Error("AdminUserEntity: email is required and cannot be empty.");
+    }
+    if (!this._createdAt) {
+      throw new Error("AdminUserEntity: created date is required.");
+    }
+    if (!this._updatedAt) {
+      throw new Error("AdminUserEntity: update date is required.");
     }
   }
 
@@ -38,9 +46,16 @@ class AppUserEntity {
   public get photoUrl() {
     return this._photoUrl;
   }
+  public get createdAt() {
+    return this._createdAt;
+  }
+  public get updatedAt() {
+    return this._updatedAt;
+  }
 }
+
 // --------------------------------
 // Public Interface
 // --------------------------------
 
-export type { AppUserEntity };
+export { AdminUserEntity };

@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AdminUserEntity } from "@/src/core/entities/admin_user.entity";
+import { AdminUserEntity } from "@/src/core/domain/entities/admin_user.entity";
 import { AdminUserDto, AdminUserDtoScheme } from "../dtos/admin_user.dto";
 
 // -------------------------------------------------------
@@ -11,14 +11,14 @@ import { AdminUserDto, AdminUserDtoScheme } from "../dtos/admin_user.dto";
 
 class AdminUserFactory {
   static adminUserDtoToEntity(adminUserdto: AdminUserDto): AdminUserEntity {
-    return {
-      userId: adminUserdto[AdminUserDtoScheme.userId],
-      email: adminUserdto[AdminUserDtoScheme.email],
-      name: adminUserdto[AdminUserDtoScheme.name],
-      photoUrl: adminUserdto[AdminUserDtoScheme.photoUrl],
-      createdAt: adminUserdto[AdminUserDtoScheme.createdAt],
-      updatedAt: adminUserdto[AdminUserDtoScheme.updatedAt],
-    };
+    return new AdminUserEntity(
+      adminUserdto[AdminUserDtoScheme.userId],
+      adminUserdto[AdminUserDtoScheme.name],
+      adminUserdto[AdminUserDtoScheme.email],
+      adminUserdto[AdminUserDtoScheme.photoUrl],
+      adminUserdto[AdminUserDtoScheme.createdAt],
+      adminUserdto[AdminUserDtoScheme.updatedAt]
+    );
   }
 }
 

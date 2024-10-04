@@ -2,8 +2,8 @@
 // Requirements
 // -------------------------------------------------------
 
-import { Scheme } from "@/src/core/value_objects/scheme";
-import { UID } from "@/src/core/value_objects/types";
+import { Scheme } from "@/src/core/domain/value_objects/scheme";
+import { UID } from "@/src/core/domain/value_objects/types";
 
 // -------------------------------------------------------
 // Helpers
@@ -12,8 +12,8 @@ import { UID } from "@/src/core/value_objects/types";
 interface AppUserDto {
   uid: UID;
   displayName: string;
-  photoUrl: string | null;
   email: string;
+  photoUrl: string | null;
 }
 
 const AppUserDtoScheme: Scheme<AppUserDto> = {

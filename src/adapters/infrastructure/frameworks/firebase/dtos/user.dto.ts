@@ -2,9 +2,9 @@
 // Requirements
 // -------------------------------------------------------
 
-import { Scheme } from "@/src/core/value_objects/scheme";
-import { ImageID, UID } from "@/src/core/value_objects/types";
-import { PreferencesTypeEnum } from "@/src/core/value_objects/preferences_type_enum_value";
+import { Scheme } from "@/src/core/domain/value_objects/scheme";
+import { UID } from "@/src/core/domain/value_objects/types";
+import { PreferencesTypeEnum } from "@/src/core/domain/value_objects/preferences_type_enum_value";
 
 // -------------------------------------------------------
 // Helpers
@@ -12,20 +12,22 @@ import { PreferencesTypeEnum } from "@/src/core/value_objects/preferences_type_e
 
 interface UserDto {
   uid: UID;
-  imageId: ImageID;
   name: string;
-  preferences: PreferencesTypeEnum;
+  email: string;
+  photoUrl: string | null;
   createdAt: Date;
   updatedAt: Date;
+  preferences: PreferencesTypeEnum;
 }
 
 const UserDtoScheme: Scheme<UserDto> = {
   uid: "uid",
-  imageId: "imageId",
   name: "name",
-  preferences: "preferences",
+  email: "email",
+  photoUrl: "photoUrl",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  preferences: "preferences",
 };
 
 // -------------------------------------------------------

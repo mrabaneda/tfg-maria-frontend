@@ -2,7 +2,7 @@
 // Requirements
 // --------------------------------
 
-import { UID } from "@/src/core/value_objects/types";
+import { UID } from "@/src/core/domain/value_objects/types";
 
 // --------------------------------
 // Helpers

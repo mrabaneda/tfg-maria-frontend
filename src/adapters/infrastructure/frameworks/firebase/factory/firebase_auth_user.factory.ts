@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import { User } from "firebase/auth";
-import { AppUserEntity } from "@/src/core/entities/app_user.entity";
+import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
 
 // -------------------------------------------------------
 // Helpers
@@ -11,12 +11,7 @@ import { AppUserEntity } from "@/src/core/entities/app_user.entity";
 
 class FirebaseAuthUserFactory {
   static firebaseAuthUserToEntity(firebaseAuthUser: User): AppUserEntity {
-    return {
-      userId: firebaseAuthUser.uid,
-      email: firebaseAuthUser.email!,
-      name: firebaseAuthUser.displayName!,
-      photoUrl: firebaseAuthUser.photoURL,
-    };
+    return new AppUserEntity(firebaseAuthUser.uid, firebaseAuthUser.displayName!, firebaseAuthUser.email!, firebaseAuthUser.photoURL); // TODO: revisar !!
   }
 }
 

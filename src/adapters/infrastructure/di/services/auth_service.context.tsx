@@ -6,8 +6,8 @@
 
 import { createContext, FC } from "react";
 import { useContext } from "react";
-import { BaseAuthService } from "@/src/core/ports/services/auth.service";
-import { AuthService } from "@/src/application/services/auth.service";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
+import { AuthService } from "@/src/core/application/services/auth.service";
 import { useAuthRepositoryContext } from "../repositories/auth_repository.context";
 
 // -------------------------------------------------------

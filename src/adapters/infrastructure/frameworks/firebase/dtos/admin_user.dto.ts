@@ -2,8 +2,8 @@
 // Requirements
 // -------------------------------------------------------
 
-import { UID } from "@/src/core/value_objects/types";
-import { Scheme } from "@/src/core/value_objects/scheme";
+import { UID } from "@/src/core/domain/value_objects/types";
+import { Scheme } from "@/src/core/domain/value_objects/scheme";
 
 // -------------------------------------------------------
 // Helpers

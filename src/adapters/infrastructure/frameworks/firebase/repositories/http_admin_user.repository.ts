@@ -2,11 +2,11 @@
 // Requirements
 // -------------------------------------------------------
 
-import { UID } from "@/src/core/value_objects/types";
-import BaseAdminUserRepository from "@/src/core/ports/repositories/admin_user.repository";
-import { AdminUserEntity } from "@/src/core/entities/admin_user.entity";
-import { AdminUserCreateModel } from "@/src/core/models/admin_user_create.model";
-import { BaseAuthService } from "@/src/core/ports/services/auth.service";
+import { UID } from "@/src/core/domain/value_objects/types";
+import BaseAdminUserRepository from "@/src/core/domain/ports/repositories/admin_user.repository";
+import { AdminUserEntity } from "@/src/core/domain/entities/admin_user.entity";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
+import { AdminUserCreateModel } from "@/src/core/domain/models/admin_user_create.model";
 
 // -------------------------------------------------------
 // Helpers

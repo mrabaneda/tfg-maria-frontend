@@ -5,7 +5,7 @@
 "use client";
 
 import { createContext, FC, useContext } from "react";
-import { BaseAuthRepository } from "@/src/core/ports/repositories/auth_repository.abstract";
+import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository.abstract";
 import { FirebaseAuthRepository } from "../../frameworks/firebase/repositories/firebase_auth_repository";
 
 // -------------------------------------------------------

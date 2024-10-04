@@ -2,10 +2,10 @@
 // Requirements
 // -------------------------------------------------------
 
-import { Token } from "@/src/core/value_objects/types";
-import { BaseAuthRepository } from "@/src/core/ports/repositories/auth_repository.abstract";
-import { AppUserEntity } from "@/src/core/entities/app_user.entity";
-import { BaseAuthService } from "@/src/core/ports/services/auth.service";
+import { Token } from "@/src/core/domain/value_objects/types";
+import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository.abstract";
+import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
 
 // -------------------------------------------------------
 // Helpers

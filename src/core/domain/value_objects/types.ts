@@ -4,12 +4,10 @@
 
 type UID = string;
 
-type ImageID = string;
-
 type Token = string;
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export type { UID, ImageID, Token };
+export type { UID, Token };
