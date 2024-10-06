@@ -12,6 +12,8 @@ import { AuthStateEnum } from "../states/auth.state";
 import { HomeIcon } from "../components/icons/home.icon";
 import { UserIcon } from "../components/icons/user.icon";
 import { LogoutIcon } from "../components/icons/logout.icon";
+import IconButton from "../components/button/icon_button";
+import { useSignOut } from "../../features/sign_out/hooks/sign_out.hook";
 
 // -------------------------------------------------------
 // Helpers
@@ -19,6 +21,11 @@ import { LogoutIcon } from "../components/icons/logout.icon";
 
 const Sidebar: FC = () => {
   const { authState } = useAuthContext();
+  
+  const {
+    signOutState: { isSigningOut },
+    openSignOutModal,
+  } = useSignOut();
 
   if (authState.status == AuthStateEnum.authenticated) {
     return (
@@ -45,8 +52,8 @@ const Sidebar: FC = () => {
         <div className="logout text-center">
           <div className="flex items-center  text-teal-500 px-4 py-2 rounded-md">
             <a className="flex items-center gap-[5px]" href="">
-              <p className="m-0 text-md text-black leading-none relative hover:text-red-400">Cerrar sesión</p>
-              <LogoutIcon color="red-700" />
+              <p className="m-0 text-md text-[#FF0000] leading-none relative">Cerrar sesión</p>
+              <IconButton icon={<LogoutIcon color="#FF0000" />} onClick={openSignOutModal} isDisabled={isSigningOut} />
             </a>
           </div>
         </div>

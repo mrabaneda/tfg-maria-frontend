@@ -2,25 +2,22 @@
 // Requirements
 // -------------------------------------------------------
 
-"use client";
-
-import Modal from "../../shared/components/dialog/modal";
-import HomeMenuItem from "./components/home_menu_item";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-const Home: React.FC = () => {
-  return (
-    <div className="flex gap-[30px]">
-      <HomeMenuItem title="Usuarios Administradores" />
-    </div>
-  );
-};
+class SignOutUseCase {
+  constructor(private readonly authService: BaseAuthService) {}
+
+  execute(): Promise<void> {
+    return this.authService.signOut();
+  }
+}
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default Home;
+export default SignOutUseCase;

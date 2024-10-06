@@ -4,18 +4,18 @@
 
 "use client";
 
-import Modal from "../../shared/components/dialog/modal";
-import HomeMenuItem from "./components/home_menu_item";
+import { SignOutUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_out_use_case.context";
+import SignOutModal from "./containers/sign_out_modal";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-const Home: React.FC = () => {
+const SignOut: React.FC = () => {
   return (
-    <div className="flex gap-[30px]">
-      <HomeMenuItem title="Usuarios Administradores" />
-    </div>
+    <SignOutUseCaseProvider>
+      <SignOutModal />
+    </SignOutUseCaseProvider>
   );
 };
 
@@ -23,4 +23,4 @@ const Home: React.FC = () => {
 // Public Interface
 // -------------------------------------------------------
 
-export default Home;
+export default SignOut;

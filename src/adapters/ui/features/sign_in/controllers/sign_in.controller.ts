@@ -30,6 +30,8 @@ const SignInController = (state: SignInState, action: SignInAction): SignInState
         isLoading: action.isLoading,
       };
     }
+    default:
+      throw new Error("Invalid SignInAction value");
   }
 };
 

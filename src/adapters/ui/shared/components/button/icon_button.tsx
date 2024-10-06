@@ -24,7 +24,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   onClick,
   isDisabled = false,
   iconClassNames = "h-4 w-auto text-white",
-  classNames = "bg-green-600 p-2 rounded hover:bg-green-500",
+  classNames = "p-2 rounded",
   icon,
 }) => {
   return (
