@@ -7,6 +7,8 @@ import BaseAdminUserRepository from "@/src/core/domain/ports/repositories/admin_
 import { AdminUserEntity } from "@/src/core/domain/entities/admin_user.entity";
 import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
 import { AdminUserCreateModel } from "@/src/core/domain/models/admin_user_create.model";
+import { axiosInstance } from "../services/axios.service";
+import { AdminUserFactory } from "../factory/admin_user.factory";
 
 // -------------------------------------------------------
 // Helpers
@@ -17,10 +19,8 @@ class HttpAdminUserRepository implements BaseAdminUserRepository {
 
   async get(): Promise<AdminUserEntity[]> {
     const token = await this.authService.getUserToken();
-    // TODO: use axios
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}admin`, { headers: { Authorization: `Bearer ${token}` }, method: "GET" });
-    const data = await response.json();
-    return data;
+    const response = await axiosInstance.get("admin", { headers: { Authorization: `Bearer ${token}` } });
+    return response.data().map(AdminUserFactory.adminUserDtoToEntity);
   }
 
   create(createModel: AdminUserCreateModel): Promise<void> {

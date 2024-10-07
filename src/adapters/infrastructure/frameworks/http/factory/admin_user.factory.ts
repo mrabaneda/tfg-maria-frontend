@@ -16,8 +16,8 @@ class AdminUserFactory {
       adminUserdto[AdminUserDtoScheme.name],
       adminUserdto[AdminUserDtoScheme.email],
       adminUserdto[AdminUserDtoScheme.photoUrl],
-      adminUserdto[AdminUserDtoScheme.createdAt],
-      adminUserdto[AdminUserDtoScheme.updatedAt]
+      new Date(adminUserdto[AdminUserDtoScheme.createdAt]),
+      new Date(adminUserdto[AdminUserDtoScheme.updatedAt])
     );
   }
 }
