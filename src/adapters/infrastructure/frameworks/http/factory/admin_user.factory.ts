@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import { AdminUserEntity } from "@/src/core/domain/entities/admin_user.entity";
-import { AdminUserDto, AdminUserDtoScheme } from "../dtos/admin_user.dto";
+import { AdminUserDto, AdminUserDtoScheme } from "../../firebase/dtos/admin_user.dto";
 
 // -------------------------------------------------------
 // Helpers
