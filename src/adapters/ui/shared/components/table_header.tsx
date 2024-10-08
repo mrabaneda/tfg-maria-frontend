@@ -3,25 +3,29 @@
 // -------------------------------------------------------
 
 "use client";
-
 import { FC } from "react";
-import { SignOutUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_out_use_case.context";
-import SignOutModal from "./containers/sign_out_modal";
 
 // -------------------------------------------------------
+// Models
+// -------------------------------------------------------
+
+interface TableHeaderProps {
+  titles: string[];
+}
+
+// ------------------------------------------------------->
 // Helpers
 // -------------------------------------------------------
 
-const SignOut: FC = () => {
-  return (
-    <SignOutUseCaseProvider>
-      <SignOutModal />
-    </SignOutUseCaseProvider>
-  );
+const TableHeader: FC<TableHeaderProps> = ({ titles }) => {
+  return  (
+    titles.map((title) =>
+        <th className="select-none pb-[20px] px-[20px] text-center text-[#ACACAC] font-bold text-[16px]">{title}</th>
+    ));
 };
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default SignOut;
+export default TableHeader;

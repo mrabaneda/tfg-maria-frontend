@@ -64,11 +64,13 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [clickOutsideContent]);
 
+  console.log(`ESTADO VISIBLE DENTRO DEL MODAL--> ${visible}`);
+
   return (
     <div
       ref={modalRef}
       className={combineClasses(
-        "fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-50 ease-in-out duration-300 flex items-center justify-center",
+        "fixed z-999 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-50 ease-in-out duration-300 flex items-center justify-center",
         visible ? "opacity-100 visible" : "opacity-0 invisible"
       )}
     >

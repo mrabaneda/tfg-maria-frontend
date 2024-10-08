@@ -2,26 +2,22 @@
 // Requirements
 // -------------------------------------------------------
 
-"use client";
-
 import { FC } from "react";
-import { SignOutUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_out_use_case.context";
-import SignOutModal from "./containers/sign_out_modal";
+import dynamic from "next/dynamic";
+import { LoadingScreen } from "../../adapters/ui/shared/components/loading_screen";
 
 // -------------------------------------------------------
-// Helpers
+// Requirements
 // -------------------------------------------------------
 
-const SignOut: FC = () => {
-  return (
-    <SignOutUseCaseProvider>
-      <SignOutModal />
-    </SignOutUseCaseProvider>
-  );
-};
+const AdminUsersModule = dynamic(() => import("../../adapters/ui/features/admin_users/admin_users"), {
+  loading: () => <LoadingScreen />,
+});
+
+const AdminUsersPage: FC = () => <AdminUsersModule />;
 
 // -------------------------------------------------------
-// Public Interface
+// Requirements
 // -------------------------------------------------------
 
-export default SignOut;
+export default AdminUsersPage;

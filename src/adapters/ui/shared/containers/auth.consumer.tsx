@@ -34,7 +34,7 @@ const AuthConsumer: React.FC<AuthConsumerProps> = ({ children }) => {
       <main className="bg-white p-4 flex-grow">{children}</main>
     </div>
   ) : authState.status === AuthStateEnum.anonymous ? (
-    <SignIn></SignIn>
+    <SignIn />
   ) : (
     <ErrorScreen />
   );

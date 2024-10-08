@@ -31,7 +31,7 @@ const useSignOut = () => {
     }
   }, [signOutState, isMounted]);
 
-  const openSignOutModal = useCallback(() => {
+  const openSignOutModal = () => {
     console.log(`SIGNOUTSTATE: ${signOutState.isSignOutModalVisible} ,,, ${signOutState.isSigningOut}`);
 
     if (isMounted()) {
@@ -39,7 +39,7 @@ const useSignOut = () => {
       dispatch({ type: "SET_SIGNING_OUT", isLoading: false });
       console.log(`EN TEORIA HE ABIERTO EL MODAL`);
     }
-  }, [signOutState, isMounted]);
+  };
 
   const handleSignOut = async () => {
     try {
