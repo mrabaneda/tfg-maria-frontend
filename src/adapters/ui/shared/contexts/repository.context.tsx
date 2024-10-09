@@ -6,6 +6,7 @@
 
 import { ReactNode, FC } from "react";
 import { AuthRepositoryProvider } from "@/src/adapters/infrastructure/di/repositories/auth_repository.context";
+import { AdminUserRepositoryProvider } from "@/src/adapters/infrastructure/di/repositories/admin_user_repository.context";
 
 // -------------------------------------------------------
 // Models
@@ -20,7 +21,11 @@ interface RepositoryContextProps {
 // -------------------------------------------------------
 
 const RepositoryContextProvider: FC<RepositoryContextProps> = ({ children }) => {
-  return <AuthRepositoryProvider>{children}</AuthRepositoryProvider>;
+  return (
+    <AdminUserRepositoryProvider>
+      <AuthRepositoryProvider>{children}</AuthRepositoryProvider>
+    </AdminUserRepositoryProvider>
+  );
 };
 
 // -------------------------------------------------------

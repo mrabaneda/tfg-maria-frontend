@@ -4,10 +4,10 @@
 
 "use client";
 
-import { BaseAdminUserRepository } from "@/src/core/domain/ports/repositories/admin_user.repository";
 import { createContext, FC, useContext } from "react";
-import { HttpAdminUserRepository } from "../../frameworks/http/repositories/http_admin_user.repository";
+import { BaseAdminUserRepository } from "@/src/core/domain/ports/repositories/admin_user.repository";
 import { useAuthServiceContext } from "../services/auth_service.context";
+import { HttpAdminUserRepository } from "../../frameworks/http/repositories/http_admin_user.repository";
 
 // -------------------------------------------------------
 // Models
@@ -29,11 +29,11 @@ const useAdminRepositoryContext = () => useContext(AdminUserRepositoryContext);
 
 const AdminUserRepositoryContext = createContext<AdminUserRepositoryContextValue>({} as AdminUserRepositoryContextValue);
 
-const AuthRepositoryProvider: FC<AdminUserRepositoryProviderProps> = ({ children }) => {
-  const authServiceContext = useAuthServiceContext();
+const AdminUserRepositoryProvider: FC<AdminUserRepositoryProviderProps> = ({ children }) => {
+  const { authService } = useAuthServiceContext();
 
   const adminUserRepositoryContextValue: AdminUserRepositoryContextValue = {
-    adminUserRepository: new HttpAdminUserRepository(authServiceContext.authService),
+    adminUserRepository: new HttpAdminUserRepository(authService),
   };
 
   return <AdminUserRepositoryContext.Provider value={adminUserRepositoryContextValue}>{children}</AdminUserRepositoryContext.Provider>;
@@ -43,4 +43,4 @@ const AuthRepositoryProvider: FC<AdminUserRepositoryProviderProps> = ({ children
 // Public Interface
 // -------------------------------------------------------
 
-export { useAdminRepositoryContext, AuthRepositoryProvider };
+export { useAdminRepositoryContext, AdminUserRepositoryProvider };

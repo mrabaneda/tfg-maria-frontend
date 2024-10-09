@@ -10,18 +10,15 @@ import { FC } from "react";
 // -------------------------------------------------------
 
 interface TableHeaderProps {
-  titles: string[];
+  title: string;
 }
 
 // ------------------------------------------------------->
 // Helpers
 // -------------------------------------------------------
 
-const TableHeader: FC<TableHeaderProps> = ({ titles }) => {
-  return  (
-    titles.map((title) =>
-        <th className="select-none pb-[20px] px-[20px] text-center text-[#ACACAC] font-bold text-[16px]">{title}</th>
-    ));
+const TableHeader: FC<TableHeaderProps> = ({ title }) => {
+  return <th className="select-none pb-[20px] px-[20px] text-center text-[#ACACAC] font-bold text-[16px]">{title}</th>;
 };
 
 // -------------------------------------------------------
