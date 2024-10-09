@@ -8,7 +8,6 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AppRoutes } from "../helpers/navigation";
-import userAvatar from "../assets/user_avatar.jpg";
 import { useAuthContext } from "../contexts/auth.context";
 import { AuthStateEnum } from "../states/auth.state";
 import { HomeIcon } from "../components/icons/home.icon";
@@ -17,6 +16,7 @@ import { LogoutIcon } from "../components/icons/logout.icon";
 import IconButton from "../components/button/icon_button";
 import { useSignOut } from "../hooks/sign_out.hook";
 import { useSignOutContext } from "../contexts/sign_out.context";
+import { defaultUserAvatar } from "../helpers/constants";
 
 // -------------------------------------------------------
 // Helpers
@@ -35,7 +35,13 @@ const Sidebar: FC = () => {
     return (
       <div className="flex flex-col justify-between h-screen bg-[#FFE9A7] p-8 w-1/5 min-w-[250px]">
         <div className="header flex flex-col justify-center items-center">
-          <Image className="max-w-28 w-full h-28 rounded-full mb-8 select-none" src={userAvatar} alt="User avatar" />
+          <Image
+            className="max-w-28 w-full h-28 rounded-full mb-8 select-none"
+            src={authState.appUser.photoUrl ?? defaultUserAvatar}
+            alt="User avatar"
+            width={120}
+            height={120}
+          />
           <p className="text-center text-lg font-normal text-black mb-4 select-none">{authState.appUser.name}</p>
           <p className="text-sm text-black select-none">Admin</p>
         </div>
