@@ -20,4 +20,4 @@ class SignOutUseCase {
 // Public Interface
 // -------------------------------------------------------
 
-export default SignOutUseCase;
+export { SignOutUseCase };

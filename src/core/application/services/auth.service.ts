@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import { Token } from "@/src/core/domain/value_objects/types";
-import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository.abstract";
+import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository";
 import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
 import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
 

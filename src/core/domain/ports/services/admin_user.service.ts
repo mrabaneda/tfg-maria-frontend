@@ -3,8 +3,6 @@
 // -------------------------------------------------------
 
 import { AdminUserEntity } from "../../entities/admin_user.entity";
-import { AdminUserCreateModel } from "../../models/admin_user_create.model";
-import { UID } from "../../value_objects/types";
 
 // -------------------------------------------------------
 // Helpers
@@ -12,8 +10,8 @@ import { UID } from "../../value_objects/types";
 
 abstract class BaseAdminUserService {
   abstract getAdminUsers(): Promise<AdminUserEntity[]>;
-  abstract createAdminUser(createModel: AdminUserCreateModel): Promise<void>;
-  abstract deleteAdminUser(uid: UID): Promise<void>;
+  // abstract createAdminUser(createModel: AdminUserCreateModel): Promise<void>;
+  // abstract deleteAdminUser(uid: UID): Promise<void>;
 }
 
 // -------------------------------------------------------

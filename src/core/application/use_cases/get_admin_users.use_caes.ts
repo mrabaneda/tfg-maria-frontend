@@ -2,18 +2,23 @@
 // Requirements
 // -------------------------------------------------------
 
-import UserEntity from "../../entities/user.entity";
+import { AdminUserEntity } from "../../domain/entities/admin_user.entity";
+import { BaseAdminUserService } from "../../domain/ports/services/admin_user.service";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-abstract class BaseUserRepository {
-  abstract get(): Promise<UserEntity[]>;
+class GetAdminUsersUseCase {
+  constructor(private readonly adminUserService: BaseAdminUserService) {}
+
+  execute(): Promise<AdminUserEntity[]> {
+    return this.adminUserService.getAdminUsers();
+  }
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default BaseUserRepository;
+export { GetAdminUsersUseCase };
