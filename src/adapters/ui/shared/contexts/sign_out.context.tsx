@@ -4,7 +4,7 @@
 
 "use client";
 
-import { createContext, FC, ReactNode, Reducer, useContext, useReducer } from "react";
+import { createContext, FC, ReactNode, useContext, useReducer } from "react";
 import { SignOutState } from "../states/sign_out.state";
 import { SignOutController } from "../controllers/sign_out.controller";
 
