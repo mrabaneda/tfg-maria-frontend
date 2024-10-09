@@ -4,7 +4,7 @@
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { Token } from "@/src/core/domain/value_objects/types";
-import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository.abstract";
+import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository";
 import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
 import { firebaseAuthInstance } from "../services/firebase.service";
 import { FirebaseAuthUserFactory } from "../factory/firebase_auth_user.factory";

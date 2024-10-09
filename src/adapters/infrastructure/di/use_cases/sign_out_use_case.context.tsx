@@ -5,8 +5,8 @@
 "use client";
 
 import { createContext, FC, useContext } from "react";
+import { SignOutUseCase } from "@/src/core/application/use_cases/sign_out.use_case";
 import { useAuthServiceContext } from "../services/auth_service.context";
-import SignOutUseCase from "@/src/core/application/use_cases/sign_out.use_case";
 
 // -------------------------------------------------------
 // Models
@@ -31,9 +31,9 @@ const SignOutUseCaseContext = createContext<SignOutUseCaseContextValue>({} as Si
 const SignOutUseCaseProvider: FC<SignOutUseCaseProviderProps> = ({ children }) => {
   const { authService } = useAuthServiceContext();
 
-  const SignOutUseCaseContextValue: SignOutUseCaseContextValue = { signOutUseCase: new SignOutUseCase(authService) };
+  const signOutUseCaseContextValue: SignOutUseCaseContextValue = { signOutUseCase: new SignOutUseCase(authService) };
 
-  return <SignOutUseCaseContext.Provider value={SignOutUseCaseContextValue}>{children}</SignOutUseCaseContext.Provider>;
+  return <SignOutUseCaseContext.Provider value={signOutUseCaseContextValue}>{children}</SignOutUseCaseContext.Provider>;
 };
 
 // -------------------------------------------------------
