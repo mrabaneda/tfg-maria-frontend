@@ -10,6 +10,8 @@ import { ServiceContextProvider } from "./service.context";
 import { AuthConsumer } from "../containers/auth.consumer";
 import { RepositoryContextProvider } from "./repository.context";
 import { AuthStateChangesUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/auth_state_changes_use_case.context";
+import { SignOutUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/sign_out_use_case.context";
+import { SignOutContextProvider } from "./sign_out.context";
 
 // -------------------------------------------------------
 // Models
@@ -28,9 +30,13 @@ const AppContext: FC<AppContextProps> = ({ children }) => {
     <RepositoryContextProvider>
       <ServiceContextProvider>
         <AuthStateChangesUseCaseProvider>
-          <AuthContextProvider>
-            <AuthConsumer>{children}</AuthConsumer>
-          </AuthContextProvider>
+          <SignOutUseCaseProvider>
+            <AuthContextProvider>
+              <SignOutContextProvider>
+                <AuthConsumer>{children}</AuthConsumer>
+              </SignOutContextProvider>
+            </AuthContextProvider>
+          </SignOutUseCaseProvider>
         </AuthStateChangesUseCaseProvider>
       </ServiceContextProvider>
     </RepositoryContextProvider>

@@ -15,7 +15,8 @@ import { HomeIcon } from "../components/icons/home.icon";
 import { UserIcon } from "../components/icons/user.icon";
 import { LogoutIcon } from "../components/icons/logout.icon";
 import IconButton from "../components/button/icon_button";
-import { useSignOut } from "../../features/sign_out/hooks/sign_out.hook";
+import { useSignOut } from "../hooks/sign_out.hook";
+import { useSignOutContext } from "../contexts/sign_out.context";
 
 // -------------------------------------------------------
 // Helpers
@@ -26,8 +27,9 @@ const Sidebar: FC = () => {
 
   const {
     signOutState: { isSigningOut },
-    openSignOutModal,
-  } = useSignOut();
+  } = useSignOutContext();
+
+  const { openSignOutModal } = useSignOut();
 
   if (authState.status == AuthStateEnum.authenticated) {
     return (
