@@ -35,20 +35,22 @@ const useSignIn = () => {
     try {
       if (!isMounted()) return;
 
-      // TODO: Validaciones en codiciones, rico pareado (LOS TRIM!!!!!)
-      if (!signInState.email) {
+      const sanatizedEmail = signInState.email.trim();
+      const sanatizedPassword = signInState.password.trim();
+
+      if (!sanatizedEmail) {
         alert("Debe introducir un email");
         return;
       }
 
-      if (!signInState.password) {
+      if (!sanatizedPassword) {
         alert("Debe introducir una contraseña");
         return;
       }
 
       if (isMounted()) dispatch({ type: "SET_LOADING", isLoading: true });
 
-      await signInUseCase.execute(signInState.email.trim(), signInState.password.trim());
+      await signInUseCase.execute(sanatizedEmail, sanatizedPassword);
 
       if (isMounted()) dispatch({ type: "SET_LOADING", isLoading: false });
     } catch (error: any) {
