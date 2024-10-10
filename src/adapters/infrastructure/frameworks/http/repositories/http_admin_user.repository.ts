@@ -18,7 +18,7 @@ class HttpAdminUserRepository implements BaseAdminUserRepository {
   async get(): Promise<AdminUserEntity[]> {
     const token = await this.authService.getUserToken();
     const response = await axiosInstance.get("admin", { headers: { Authorization: `Bearer ${token}` } });
-    return response.data().map(AdminUserFactory.adminUserDtoToEntity);
+    return response.data.map(AdminUserFactory.adminUserDtoToEntity);
   }
 }
 
