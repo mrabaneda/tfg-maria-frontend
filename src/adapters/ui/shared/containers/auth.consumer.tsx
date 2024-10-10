@@ -38,6 +38,7 @@ const AuthConsumer: React.FC<AuthConsumerProps> = ({ children }) => {
     <div className="flex h-screen">
       <Sidebar />
       {signOutState.isSignOutModalVisible && (
+        // TODO: buttons hover
         <Modal
           title={"Cerrar sesión"}
           visible={signOutState.isSignOutModalVisible}
