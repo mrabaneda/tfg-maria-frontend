@@ -82,7 +82,7 @@ const Modal: React.FC<ModalProps> = ({
           &times;
         </span>
         <div className="py-[16px] px-[20px]">
-          <h2 className="md:text-lg text-base font-medium">{title}</h2>
+          <h2 className="md:text-lg text-base font-semibold">{title}</h2>
         </div>
         <div className="py-[7px] px-[20px]">
           <h5 className="md:text-base text-sm">{body}</h5>
@@ -90,7 +90,7 @@ const Modal: React.FC<ModalProps> = ({
         <div className="py-[16px] px-[20px]">
           <div className="flex flex-row justify-end gap-2">
             <Button onClick={submit} color={confirmButtonColor} text={confirmButtonText ?? "Aceptar"} isLoading={isLoading} isDisabled={isLoading} />
-            <Button onClick={hide} text={cancelButtonText ?? "Cancelar"} color={"bg-neutral-600"} isLoading={isLoading} isDisabled={isLoading} />
+            <Button onClick={hide} text={cancelButtonText ?? "Cancelar"} color={"bg-neutral-500 hover:bg-neutral-600"} isLoading={isLoading} isDisabled={isLoading}  />
           </div>
         </div>
       </div>
