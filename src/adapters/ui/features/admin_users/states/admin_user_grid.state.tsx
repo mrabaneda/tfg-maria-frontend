@@ -10,6 +10,7 @@ import { AdminUserModel } from "../models/admin_user.model";
 
 interface AdminUserGridState {
   adminUserList: AdminUserModel[] | null;
+  isLoading: boolean;
   getAdminUsersError?: string;
 }
 

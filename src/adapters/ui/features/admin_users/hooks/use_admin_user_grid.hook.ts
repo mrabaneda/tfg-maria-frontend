@@ -2,46 +2,50 @@
 // Requirements
 // -------------------------------------------------------
 
+import { useEffect, useReducer } from "react";
 import { useGetAdminUsersUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/get_admin_users_use_case.context";
-import { useEffect } from "react";
-import { useAdminUserGridContext } from "../contexts/admin_user_grid.context";
 import { AdminUserFactory } from "../factory/admin_user.factory";
+import { useMounted } from "../../../shared/hooks/use_mounted";
+import { AdminUserGridController } from "../controllers/admin_user_grid.controller";
+import { AdminUserGridState } from "../states/admin_user_grid.state";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
 const useAdminUserGrid = () => {
-  const { setAdminUserList, setGetAdminListError } = useAdminUserGridContext();
+  const [adminUserGridState, dispatch] = useReducer(AdminUserGridController, {
+    adminUserList: null,
+    isLoading: false,
+    getAdminUsersError: undefined,
+  } satisfies AdminUserGridState);
+
+  const isMounted = useMounted();
 
   const { getAdminUsersUseCase } = useGetAdminUsersUseCaseContext();
 
   useEffect(() => {
-    let mounted = true;
+    if (adminUserGridState.isLoading) return;
+    if (!isMounted()) return;
+    if (isMounted()) dispatch({ type: "SET_IS_LOADING", isLoading: true });
 
-    if (mounted) setAdminUserList(null);
-    console.log("Fetching admin users...");
     getAdminUsersUseCase
       .execute()
       .then((adminUserList) => {
-        console.log(`AQUI TENEMOS A LOS ADMINS: ${JSON.stringify(adminUserList)}`);
-
-        if (mounted) setAdminUserList(adminUserList.map(AdminUserFactory.entityToModel));
+        if (isMounted()) {
+          dispatch({ type: "SET_ADMIN_GRID_LIST", adminUserList: adminUserList.map(AdminUserFactory.entityToModel) });
+          dispatch({ type: "SET_IS_LOADING", isLoading: false });
+        }
       })
       .catch((err) => {
-        if (mounted) {
-          console.log(`EL ERROR ENTERO: ${JSON.stringify(err)}`);
-
-          setGetAdminListError(err.message);
+        if (isMounted()) {
+          dispatch({ type: "SET_GET_ADMIN_GRID_ERROR", error: err.message });
           alert(`Hubo un error inesperado: ${err.message}`);
         }
       });
+  }, [isMounted, getAdminUsersUseCase]);
 
-    return () => {
-      mounted = false;
-    };
-  }, [getAdminUsersUseCase, setAdminUserList, setGetAdminListError]);
-  return {};
+  return { adminUserGridState };
 };
 
 // -------------------------------------------------------

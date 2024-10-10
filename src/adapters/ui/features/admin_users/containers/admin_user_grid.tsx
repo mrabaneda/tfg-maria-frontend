@@ -4,6 +4,7 @@
 
 "use client";
 
+import { LoadingScreen } from "../../../shared/components/loading_screen";
 import TableHeader from "../../../shared/components/table_header";
 import Toolbar from "../../../shared/components/tool_bar";
 import { defaultUserAvatar } from "../../../shared/helpers/constants";
@@ -17,7 +18,9 @@ import { useAdminUserGridContext } from "../contexts/admin_user_grid.context";
 const AdminUserGrid: React.FC = () => {
   const { adminUserGridState } = useAdminUserGridContext();
 
-  return (
+  return adminUserGridState.isLoading ? (
+    <LoadingScreen />
+  ) : (
     <div className="p-[30px]">
       <div>
         <Toolbar title={"Lista de Usuarios Administradores"} buttonText={"Añadir administrador"} />

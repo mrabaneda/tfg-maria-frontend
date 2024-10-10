@@ -4,10 +4,9 @@
 
 "use client";
 
-import { createContext, FC, ReactNode, useContext, useReducer } from "react";
+import { createContext, FC, ReactNode, useContext } from "react";
 import { AdminUserGridState } from "../states/admin_user_grid.state";
-import { AdminUserModel } from "../models/admin_user.model";
-import { AdminUserGridController } from "../controllers/admin_user_grid.controller";
+import { useAdminUserGrid } from "../hooks/use_admin_user_grid.hook";
 
 // -------------------------------------------------------
 // Models
@@ -15,8 +14,6 @@ import { AdminUserGridController } from "../controllers/admin_user_grid.controll
 
 interface AdminUserGridValue {
   adminUserGridState: AdminUserGridState;
-  setAdminUserList: (adminUserList: AdminUserModel[] | null) => void;
-  setGetAdminListError: (error: string) => void;
 }
 
 interface AdminUserGridProps {
@@ -30,15 +27,10 @@ interface AdminUserGridProps {
 const AdminUserGridContext = createContext<AdminUserGridValue>({} as AdminUserGridValue);
 
 const AdminUserGridContextProvider: FC<AdminUserGridProps> = ({ children }) => {
-  const [adminUserGridState, dispatch] = useReducer(AdminUserGridController, {
-    adminUserList: null,
-    getAdminUsersError: undefined,
-  } satisfies AdminUserGridState);
+  const { adminUserGridState } = useAdminUserGrid();
 
   const AdminUserGridValue: AdminUserGridValue = {
     adminUserGridState: adminUserGridState,
-    setAdminUserList: (adminUserList: AdminUserModel[] | null) => dispatch({ type: "SET_ADMIN_GRID_LIST", adminUserList: adminUserList }),
-    setGetAdminListError: (error: string) => dispatch({ type: "SET_GET_ADMIN_GRID_ERROR", error: error }),
   };
 
   return <AdminUserGridContext.Provider value={AdminUserGridValue}>{children}</AdminUserGridContext.Provider>;
