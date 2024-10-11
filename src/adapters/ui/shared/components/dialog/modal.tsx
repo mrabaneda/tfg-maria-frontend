@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, ReactNode } from "react";
 import Button from "../button/button";
 import { combineClasses } from "../../helpers/utils";
 
@@ -13,7 +13,7 @@ import { combineClasses } from "../../helpers/utils";
 interface ModalProps {
   title: string;
   visible: boolean;
-  body: string;
+  body: ReactNode;
   isLoading: boolean;
   setVisible: (isVisible: boolean) => void;
   onSubmit: () => void;
@@ -88,9 +88,15 @@ const Modal: React.FC<ModalProps> = ({
           <h5 className="md:text-base text-sm">{body}</h5>
         </div>
         <div className="py-[16px] px-[20px]">
-          <div className="flex flex-row justify-end gap-2">
+          <div className="flex flex-row justify-end gap-4">
             <Button onClick={submit} color={confirmButtonColor} text={confirmButtonText ?? "Aceptar"} isLoading={isLoading} isDisabled={isLoading} />
-            <Button onClick={hide} text={cancelButtonText ?? "Cancelar"} color={"bg-neutral-500 hover:bg-neutral-600"} isLoading={isLoading} isDisabled={isLoading}  />
+            <Button
+              onClick={hide}
+              text={cancelButtonText ?? "Cancelar"}
+              color={"bg-neutral-500 hover:bg-neutral-600"}
+              isLoading={isLoading}
+              isDisabled={isLoading}
+            />
           </div>
         </div>
       </div>
