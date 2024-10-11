@@ -3,6 +3,7 @@
 // -------------------------------------------------------
 
 import { AdminUserEntity } from "../../entities/admin_user.entity";
+import { AdminUserCreateModel } from "../../models/admin_user_create.model";
 
 // -------------------------------------------------------
 // Helpers
@@ -10,7 +11,7 @@ import { AdminUserEntity } from "../../entities/admin_user.entity";
 
 abstract class BaseAdminUserService {
   abstract getAdminUsers(): Promise<AdminUserEntity[]>;
-  // abstract createAdminUser(createModel: AdminUserCreateModel): Promise<void>;
+  abstract createAdminUser(createModel: AdminUserCreateModel): Promise<void>;
   // abstract deleteAdminUser(uid: UID): Promise<void>;
 }
 

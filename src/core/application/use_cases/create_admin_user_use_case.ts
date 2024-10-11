@@ -2,24 +2,18 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AdminUserEntity } from "../../domain/entities/admin_user.entity";
 import { AdminUserCreateModel } from "../../domain/models/admin_user_create.model";
-import { BaseAdminUserRepository } from "../../domain/ports/repositories/admin_user.repository";
 import { BaseAdminUserService } from "../../domain/ports/services/admin_user.service";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class AdminUserService implements BaseAdminUserService {
-  constructor(private readonly adminUserRepository: BaseAdminUserRepository) {}
+class CreateAdminUserUseCase {
+  constructor(private readonly adminUserService: BaseAdminUserService) {}
 
-  getAdminUsers(): Promise<AdminUserEntity[]> {
-    return this.adminUserRepository.get();
-  }
-
-  createAdminUser(createModel: AdminUserCreateModel): Promise<void> {
-    return this.adminUserRepository.create(createModel);
+  execute(createModel: AdminUserCreateModel): Promise<void> {
+    return this.adminUserService.createAdminUser(createModel);
   }
 }
 
@@ -27,4 +21,4 @@ class AdminUserService implements BaseAdminUserService {
 // Public Interface
 // -------------------------------------------------------
 
-export { AdminUserService };
+export { CreateAdminUserUseCase };
