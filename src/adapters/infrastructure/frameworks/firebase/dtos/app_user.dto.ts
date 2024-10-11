@@ -2,7 +2,6 @@
 // Requirements
 // -------------------------------------------------------
 
-import { Scheme } from "@/src/core/domain/value_objects/scheme";
 import { UID } from "@/src/core/domain/value_objects/types";
 
 // -------------------------------------------------------
@@ -16,17 +15,8 @@ interface AppUserDto {
   photoUrl: string | null;
 }
 
-const AppUserDtoScheme: Scheme<AppUserDto> = {
-  uid: "uid",
-  displayName: "displayName",
-  email: "email",
-  photoUrl: "photoUrl",
-};
-
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
 export type { AppUserDto };
-
-export { AppUserDtoScheme };

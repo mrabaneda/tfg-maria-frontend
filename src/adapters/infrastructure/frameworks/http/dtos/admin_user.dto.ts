@@ -3,7 +3,6 @@
 // -------------------------------------------------------
 
 import { UID } from "@/src/core/domain/value_objects/types";
-import { Scheme } from "@/src/core/domain/value_objects/scheme";
 
 // -------------------------------------------------------
 // Helpers
@@ -18,19 +17,8 @@ interface AdminUserDto {
   updatedAt: Date;
 }
 
-const AdminUserDtoScheme: Scheme<AdminUserDto> = {
-  userId: "userId",
-  name: "name",
-  email: "email",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-  photoUrl: "photoUrl",
-};
-
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
 export type { AdminUserDto };
-
-export { AdminUserDtoScheme };

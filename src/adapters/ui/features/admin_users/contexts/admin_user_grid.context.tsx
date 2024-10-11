@@ -29,11 +29,11 @@ const AdminUserGridContext = createContext<AdminUserGridValue>({} as AdminUserGr
 const AdminUserGridContextProvider: FC<AdminUserGridProps> = ({ children }) => {
   const { adminUserGridState } = useAdminUserGrid();
 
-  const AdminUserGridValue: AdminUserGridValue = {
+  const adminUserGridValue: AdminUserGridValue = {
     adminUserGridState: adminUserGridState,
   };
 
-  return <AdminUserGridContext.Provider value={AdminUserGridValue}>{children}</AdminUserGridContext.Provider>;
+  return <AdminUserGridContext.Provider value={adminUserGridValue}>{children}</AdminUserGridContext.Provider>;
 };
 
 const useAdminUserGridContext = () => {
