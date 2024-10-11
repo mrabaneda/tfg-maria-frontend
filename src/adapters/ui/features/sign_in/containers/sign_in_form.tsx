@@ -26,7 +26,7 @@ const SignInForm: FC = () => {
   return (
     <div className="w-full max-w-[593px] bg-white shadow h-[583px] flex flex-col align-center justify-center relative rounded-xl p-[37px]">
       <div className="flex w-full justify-center mb-[37px]">
-        <Image className={""} src={logo} alt="Cargando..." priority={true} />
+        <Image src={logo} alt="Vale Logo" priority={true} />
       </div>
       <FormInputText
         id={"email"}
