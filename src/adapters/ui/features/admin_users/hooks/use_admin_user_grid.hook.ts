@@ -21,7 +21,6 @@ const useAdminUserGrid = () => {
   } satisfies AdminUserGridState);
 
   const isMounted = useMounted();
-
   const { getAdminUsersUseCase } = useGetAdminUsersUseCaseContext();
 
   useEffect(() => {

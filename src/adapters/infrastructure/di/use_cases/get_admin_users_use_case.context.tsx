@@ -5,7 +5,7 @@
 "use client";
 
 import { createContext, FC, useContext } from "react";
-import { GetAdminUsersUseCase } from "@/src/core/application/use_cases/get_admin_users.use_caes";
+import { GetAdminUsersUseCase } from "@/src/core/application/use_cases/get_admin_users.use_case";
 import { useAdminUserServiceContext } from "../services/admin_user_service.context";
 
 // -------------------------------------------------------
