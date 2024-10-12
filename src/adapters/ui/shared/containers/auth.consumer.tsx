@@ -36,7 +36,7 @@ const AuthConsumer: React.FC<AuthConsumerProps> = ({ children }) => {
   return authState.status === AuthStateEnum.authenticating ? (
     <LoadingScreen />
   ) : authState.status === AuthStateEnum.authenticated ? (
-    <div className="flex h-screen">
+    <div className="flex">
       <Sidebar />
       {signOutState.isSignOutModalVisible && (
         <Modal

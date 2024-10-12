@@ -33,7 +33,7 @@ const Sidebar: FC = () => {
 
   if (authState.status == AuthStateEnum.authenticated) {
     return (
-      <div className="flex flex-col justify-between h-screen bg-[#FFE9A7] p-8 w-1/5 min-w-[250px]">
+      <div className="flex flex-col justify-between min-h-screen bg-[#FFE9A7] p-8 w-1/5 min-w-[250px]">
         <div className="header flex flex-col justify-center items-center">
           <Image
             className="max-w-28 w-full h-28 rounded-full mb-8 select-none"
