@@ -32,6 +32,7 @@ const Toolbar: FC<ToolBarProps> = ({ title, isDisabled, buttonText, onClick }) =
           text={buttonText}
           onClick={onClick}
           isDisabled={isDisabled}
+          isLoading={isDisabled}
         ></Button>
       </div>
     </div>
