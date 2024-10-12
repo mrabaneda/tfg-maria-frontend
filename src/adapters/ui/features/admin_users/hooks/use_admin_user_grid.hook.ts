@@ -8,6 +8,7 @@ import { AdminUserFactory } from "../factory/admin_user.factory";
 import { useMounted } from "../../../shared/hooks/use_mounted";
 import { AdminUserGridController } from "../controllers/admin_user_grid.controller";
 import { AdminUserGridState } from "../states/admin_user_grid.state";
+import { useAdminUserCreateContext } from "../contexts/admin_user_create.context";
 
 // -------------------------------------------------------
 // Helpers
@@ -19,6 +20,10 @@ const useAdminUserGrid = () => {
     isLoading: false,
     getAdminUsersError: undefined,
   } satisfies AdminUserGridState);
+
+  const {
+    adminUserCreateState: { isCreating },
+  } = useAdminUserCreateContext();
 
   const isMounted = useMounted();
   const { getAdminUsersUseCase } = useGetAdminUsersUseCaseContext();
@@ -42,7 +47,7 @@ const useAdminUserGrid = () => {
           alert(`Hubo un error inesperado: ${err.message}`);
         }
       });
-  }, [isMounted, getAdminUsersUseCase]);
+  }, [isMounted, getAdminUsersUseCase, isCreating]);
 
   return { adminUserGridState };
 };

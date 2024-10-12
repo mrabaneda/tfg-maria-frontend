@@ -8,8 +8,9 @@ import { AdminUserServiceProvider } from "@/src/adapters/infrastructure/di/servi
 import { GetAdminUsersUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/get_admin_users_use_case.context";
 import { AdminUserRepositoryProvider } from "@/src/adapters/infrastructure/di/repositories/admin_user_repository.context";
 import { AdminUserGridContextProvider } from "./contexts/admin_user_grid.context";
-import AdminUserGrid from "./containers/admin_user_grid";
 import { AdminUserCreateContextProvider } from "./contexts/admin_user_create.context";
+import { CreateAdminUserUseCaseProvider } from "@/src/adapters/infrastructure/di/use_cases/create_admin_user_use_case.context";
+import AdminUserGrid from "./containers/admin_user_grid";
 
 // -------------------------------------------------------
 // Helpers
@@ -21,11 +22,13 @@ const AdminUsers: React.FC = () => {
     <AdminUserRepositoryProvider>
       <AdminUserServiceProvider>
         <GetAdminUsersUseCaseProvider>
-          <AdminUserGridContextProvider>
+          <CreateAdminUserUseCaseProvider>
             <AdminUserCreateContextProvider>
-              <AdminUserGrid />
+              <AdminUserGridContextProvider>
+                <AdminUserGrid />
+              </AdminUserGridContextProvider>
             </AdminUserCreateContextProvider>
-          </AdminUserGridContextProvider>
+          </CreateAdminUserUseCaseProvider>
         </GetAdminUsersUseCaseProvider>
       </AdminUserServiceProvider>
     </AdminUserRepositoryProvider>
