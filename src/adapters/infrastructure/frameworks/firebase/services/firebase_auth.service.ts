@@ -4,9 +4,9 @@
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { Token } from "@/src/core/domain/value_objects/types";
-import { BaseAuthRepository } from "@/src/core/domain/ports/repositories/auth_repository";
-import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
-import { firebaseAuthInstance } from "../services/firebase.service";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
+import { AuthUserEntity } from "@/src/core/domain/entities/auth_user.entity";
+import { firebaseAuthInstance } from "./firebase.service";
 import { FirebaseAuthUserFactory } from "../factory/firebase_auth_user.factory";
 import { UnauthorizedException } from "@/src/core/exceptions/errors";
 
@@ -14,8 +14,15 @@ import { UnauthorizedException } from "@/src/core/exceptions/errors";
 // Helpers
 // -------------------------------------------------------
 
-class FirebaseAuthRepository implements BaseAuthRepository {
-  async signIn(email: string, password: string): Promise<AppUserEntity> {
+class FirebaseAuthService implements BaseAuthService {
+  async isAdmin(): Promise<boolean> {
+    const user = firebaseAuthInstance.currentUser;
+    if (!user) throw new UnauthorizedException();
+    const decodedIdToken = await user.getIdTokenResult(true);
+    return decodedIdToken.claims.admin === true;
+  }
+
+  async signIn(email: string, password: string): Promise<AuthUserEntity> {
     const firebaseAuthUser = await signInWithEmailAndPassword(firebaseAuthInstance, email, password);
     return FirebaseAuthUserFactory.firebaseAuthUserToEntity(firebaseAuthUser.user);
   }
@@ -30,7 +37,7 @@ class FirebaseAuthRepository implements BaseAuthRepository {
     return await user.getIdToken();
   }
 
-  onAuthStateChanges(cb: (user: AppUserEntity | null) => void): () => void {
+  onAuthStateChanges(cb: (user: AuthUserEntity | null) => void): () => void {
     return onAuthStateChanged(firebaseAuthInstance, (user) => {
       return cb(user ? FirebaseAuthUserFactory.firebaseAuthUserToEntity(user) : null);
     });
@@ -41,4 +48,4 @@ class FirebaseAuthRepository implements BaseAuthRepository {
 // Public Interface
 // -------------------------------------------------------
 
-export { FirebaseAuthRepository };
+export { FirebaseAuthService };

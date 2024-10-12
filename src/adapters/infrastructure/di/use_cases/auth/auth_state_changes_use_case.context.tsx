@@ -5,8 +5,8 @@
 "use client";
 
 import { createContext, FC, useContext } from "react";
-import { useAuthServiceContext } from "../services/auth_service.context";
-import { AuthStateChangesUseCase } from "@/src/core/application/use_cases/auth_state_changes.use_case";
+import { useAuthServiceContext } from "../../services/auth_service.context";
+import { AuthStateChangesUseCase } from "@/src/core/use_cases/auth/auth_state_changes.use_case";
 
 // -------------------------------------------------------
 // Models

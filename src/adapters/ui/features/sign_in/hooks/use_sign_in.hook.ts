@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import { ChangeEventHandler, useReducer } from "react";
-import { useSignInUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/sign_in_use_case.context";
+import { useSignInUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/auth/sign_in_use_case.context";
 import { SignInController } from "../controllers/sign_in.controller";
 import { SignInState } from "../states/sign_in.state";
 import { useMounted } from "../../../shared/hooks/use_mounted";

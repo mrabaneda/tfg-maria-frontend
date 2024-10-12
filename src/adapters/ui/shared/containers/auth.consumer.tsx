@@ -30,6 +30,7 @@ const AuthConsumer: React.FC<AuthConsumerProps> = ({ children }) => {
   const { authState } = useAuthContext();
 
   const { signOutState } = useSignOutContext();
+  
   const { handleSignOut, closeSignOutModal } = useSignOut();
 
   return authState.status === AuthStateEnum.authenticating ? (

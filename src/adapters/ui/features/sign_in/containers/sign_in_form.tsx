@@ -29,28 +29,28 @@ const SignInForm: FC = () => {
         <Image src={logo} alt="Vale Logo" priority={true} />
       </div>
       <FormInputText
-        id={"email"}
+        id="email"
         value={email}
         onChange={setEmail}
         label="Email"
-        name="Email"
+        name="email"
         placeholder="Introduzca su email"
         isDisabled={isLoading}
         style="mb-[20px]"
       ></FormInputText>
       <FormInputText
-        id={"password"}
+        id="password"
         value={password}
         onChange={setPassword}
         label="Password"
-        name="Password"
+        name="password"
         placeholder="Introduzca su contraseña"
         isDisabled={isLoading}
         style="mb-[40px]"
         type="password"
       ></FormInputText>
       <Button
-        text={"Iniciar Sesión"}
+        text="Iniciar Sesión"
         isLoading={isLoading}
         isDisabled={isLoading}
         color="bg-[#68C0B8]"

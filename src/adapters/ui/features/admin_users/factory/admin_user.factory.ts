@@ -12,11 +12,10 @@ import { AdminUserModel } from "../models/admin_user.model";
 class AdminUserFactory {
   static entityToModel(entity: AdminUserEntity): AdminUserModel {
     return {
-      userId: entity.userId,
+      userId: entity.uid,
       name: entity.name,
       email: entity.email,
       photoUrl: entity.photoUrl,
-      createdAt: new Date(entity.createdAt),
     };
   }
 }

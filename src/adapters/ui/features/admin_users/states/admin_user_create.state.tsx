@@ -3,14 +3,13 @@
 // -------------------------------------------------------
 
 interface AdminUserCreateState {
-  name: string | null;
-  nameError?: string;
-  email: string | null;
-  emailError?: string;
-  password: string | null;
-  passwordError?: string;
-  photoUrl: string | null;
-
+  name: string;
+  nameError: string | null;
+  email: string;
+  emailError: string | null;
+  password: string;
+  passwordError: string | null;
+  image: Blob | null,
   isCreating: boolean;
   isCreatingFormOpen: boolean;
 }

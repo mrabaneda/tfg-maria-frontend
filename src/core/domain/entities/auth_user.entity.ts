@@ -8,15 +8,14 @@ import { UID } from "../value_objects/types";
 // Helpers
 // --------------------------------
 
-interface AdminUserEntity {
+interface AuthUserEntity {
   readonly uid: UID;
   readonly name: string;
   readonly email: string;
   readonly photoUrl: string;
 }
-
 // --------------------------------
 // Public Interface
 // --------------------------------
 
-export type { AdminUserEntity };
+export type { AuthUserEntity };

@@ -2,7 +2,7 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
+import { AuthUserEntity } from "@/src/core/domain/entities/auth_user.entity";
 import { AppUserViewModel } from "../models/app_user.model";
 
 // -------------------------------------------------------
@@ -10,9 +10,9 @@ import { AppUserViewModel } from "../models/app_user.model";
 // -------------------------------------------------------
 
 class AppUserFactory {
-  static appUserToModel(appUser: AppUserEntity): AppUserViewModel {
+  static appUserToModel(appUser: AuthUserEntity): AppUserViewModel {
     return {
-      uid: appUser.userId,
+      uid: appUser.uid,
       email: appUser.email,
       name: appUser.name,
       photoUrl: appUser.photoUrl,

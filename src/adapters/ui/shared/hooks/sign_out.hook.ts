@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import { useMounted } from "./use_mounted";
-import { useSignOutUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/sign_out_use_case.context";
+import { useSignOutUseCaseContext } from "@/src/adapters/infrastructure/di/use_cases/auth/sign_out_use_case.context";
 import { useSignOutContext } from "../contexts/sign_out.context";
 
 // -------------------------------------------------------

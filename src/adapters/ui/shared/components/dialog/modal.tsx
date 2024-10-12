@@ -44,9 +44,8 @@ const Modal: React.FC<ModalProps> = ({
   }, [setVisible]);
 
   const submit = useCallback(() => {
-    hide();
     onSubmit();
-  }, [hide, onSubmit]);
+  }, [onSubmit]);
 
   const clickOutsideContent = useCallback(
     (e: MouseEvent) => {

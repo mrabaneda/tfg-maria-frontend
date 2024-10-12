@@ -2,16 +2,18 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
-import { AppUserDto } from "../dtos/app_user.dto";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
+import { AuthUserEntity } from "@/src/core/domain/entities/auth_user.entity";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class AppUserFactory {
-  static appUserDtoToEntity(appUserDto: AppUserDto): AppUserEntity {
-    return new AppUserEntity(appUserDto.uid, appUserDto.displayName, appUserDto.email, appUserDto.photoUrl);
+class AuthStateChangesUseCase {
+  constructor(private readonly authService: BaseAuthService) {}
+
+  execute(cb: (user: AuthUserEntity | null) => void): () => void {
+    return this.authService.onAuthStateChanges(cb);
   }
 }
 
@@ -19,4 +21,4 @@ class AppUserFactory {
 // Public Interface
 // -------------------------------------------------------
 
-export { AppUserFactory };
+export { AuthStateChangesUseCase };

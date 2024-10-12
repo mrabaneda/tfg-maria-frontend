@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 import { UID } from "@/src/core/domain/value_objects/types";
-import { PreferencesTypeEnum } from "@/src/core/domain/value_objects/preferences_type_enum_value";
+import { PreferencesTypeEnum } from "@/src/core/domain/enums/preferences_type.enum";
 
 // -------------------------------------------------------
 // Helpers

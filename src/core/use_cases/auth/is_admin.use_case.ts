@@ -2,18 +2,17 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AdminUserEntity } from "../../domain/entities/admin_user.entity";
-import { BaseAdminUserService } from "../../domain/ports/services/admin_user.service";
+import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class GetAdminUsersUseCase {
-  constructor(private readonly adminUserService: BaseAdminUserService) {}
+class IsAdminUseCase {
+  constructor(private readonly authService: BaseAuthService) {}
 
-  execute(): Promise<AdminUserEntity[]> {
-    return this.adminUserService.getAdminUsers();
+  execute(): Promise<boolean> {
+    return this.authService.isAdmin();
   }
 }
 
@@ -21,4 +20,4 @@ class GetAdminUsersUseCase {
 // Public Interface
 // -------------------------------------------------------
 
-export { GetAdminUsersUseCase };
+export { IsAdminUseCase };

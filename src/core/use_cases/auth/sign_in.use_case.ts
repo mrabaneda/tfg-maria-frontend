@@ -2,18 +2,18 @@
 // Requirements
 // -------------------------------------------------------
 
+import { AuthUserEntity } from "@/src/core/domain/entities/auth_user.entity";
 import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
-import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class AuthStateChangesUseCase {
+class SignInUseCase {
   constructor(private readonly authService: BaseAuthService) {}
 
-  execute(cb: (user: AppUserEntity | null) => void): () => void {
-    return this.authService.onAuthStateChanges(cb);
+  execute(email: string, password: string): Promise<AuthUserEntity> {
+    return this.authService.signIn(email, password);
   }
 }
 
@@ -21,4 +21,4 @@ class AuthStateChangesUseCase {
 // Public Interface
 // -------------------------------------------------------
 
-export { AuthStateChangesUseCase };
+export { SignInUseCase };

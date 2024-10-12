@@ -5,8 +5,8 @@
 "use client";
 
 import { createContext, FC, useContext } from "react";
-import { SignInUseCase } from "@/src/core/application/use_cases/sign_in.use_case";
-import { useAuthServiceContext } from "../services/auth_service.context";
+import { useAuthServiceContext } from "../../services/auth_service.context";
+import { SignInUseCase } from "@/src/core/use_cases/auth/sign_in.use_case";
 
 // -------------------------------------------------------
 // Models

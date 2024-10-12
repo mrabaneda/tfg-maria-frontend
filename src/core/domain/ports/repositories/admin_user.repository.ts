@@ -12,7 +12,6 @@ import { AdminUserCreateModel } from "../../models/admin_user_create.model";
 abstract class BaseAdminUserRepository {
   abstract get(): Promise<AdminUserEntity[]>;
   abstract create(createModel: AdminUserCreateModel): Promise<void>;
-  //   abstract delete(uid: UID): Promise<void>;
 }
 
 // -------------------------------------------------------

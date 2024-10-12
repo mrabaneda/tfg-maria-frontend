@@ -4,9 +4,9 @@
 
 "use client";
 
+import { CreateAdminUserUseCase } from "@/src/core/use_cases/admin/create_admin_user_use_case";
 import { createContext, FC, useContext } from "react";
-import { useAdminUserServiceContext } from "../services/admin_user_service.context";
-import { CreateAdminUserUseCase } from "@/src/core/application/use_cases/create_admin_user_use_case";
+import { useAdminRepositoryContext } from "../../repositories/admin_user_repository.context";
 
 // -------------------------------------------------------
 // Models
@@ -29,10 +29,10 @@ const useCreateAdminUserUseCaseContext = () => useContext(CreateAdminUserUseCase
 const CreateAdminUserUseCaseContext = createContext<CreateAdminUserUseCaseContextValue>({} as CreateAdminUserUseCaseContextValue);
 
 const CreateAdminUserUseCaseProvider: FC<CreateAdminUserUseCaseProviderProps> = ({ children }) => {
-  const { adminUserService } = useAdminUserServiceContext();
+  const { adminUserRepository } = useAdminRepositoryContext();
 
   const createAdminUsersUseCaseContextValue: CreateAdminUserUseCaseContextValue = {
-    createAdminUsersUseCase: new CreateAdminUserUseCase(adminUserService),
+    createAdminUsersUseCase: new CreateAdminUserUseCase(adminUserRepository),
   };
 
   return <CreateAdminUserUseCaseContext.Provider value={createAdminUsersUseCaseContextValue}>{children}</CreateAdminUserUseCaseContext.Provider>;

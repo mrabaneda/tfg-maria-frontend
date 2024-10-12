@@ -5,8 +5,8 @@
 "use client";
 
 import { createContext, FC, useContext } from "react";
-import { SignOutUseCase } from "@/src/core/application/use_cases/sign_out.use_case";
-import { useAuthServiceContext } from "../services/auth_service.context";
+import { useAuthServiceContext } from "../../services/auth_service.context";
+import { SignOutUseCase } from "@/src/core/use_cases/auth/sign_out.use_case";
 
 // -------------------------------------------------------
 // Models

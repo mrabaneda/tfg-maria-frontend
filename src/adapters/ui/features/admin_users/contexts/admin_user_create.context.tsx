@@ -4,9 +4,9 @@
 
 "use client";
 
-import { createContext, FC, ReactNode, useContext, useReducer } from "react";
+import { createContext, FC, ReactNode, useContext } from "react";
 import { AdminUserCreateState } from "../states/admin_user_create.state";
-import { AdminUserCreateController } from "../controllers/admin_user_create.controller";
+import { useAdminUserCreate } from "../hooks/use_admin_user_create.hook";
 
 // -------------------------------------------------------
 // Models
@@ -14,16 +14,13 @@ import { AdminUserCreateController } from "../controllers/admin_user_create.cont
 
 interface AdminUserCreateValue {
   adminUserCreateState: AdminUserCreateState;
-  setName: (name: string) => void;
-  setNameError: (nameError?: string) => void;
-  setEmail: (email: string) => void;
-  setEmailError: (emailError?: string) => void;
-  setPassword: (password: string) => void;
-  setPasswordError: (passwordError?: string) => void;
-  setPhotoUrl: (photoUrl: string | null) => void;
-  setCreatingAdminUser: (isLoading: boolean) => void;
+  setName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
   openCreateAdminForm: () => void;
-  closeCreateAdminForm: () => void;
+  createFormSetVisible: (isVisible: boolean) => void;
+  createAdminUser: () => void;
 }
 
 interface AdminUserCreateProps {
@@ -37,31 +34,26 @@ interface AdminUserCreateProps {
 const AdminUserCreateContext = createContext<AdminUserCreateValue>({} as AdminUserCreateValue);
 
 const AdminUserCreateContextProvider: FC<AdminUserCreateProps> = ({ children }) => {
-  const [adminUserCreateState, dispatchCreate] = useReducer(AdminUserCreateController, {
-    name: null,
-    email: null,
-    password: null,
-    photoUrl: null,
-    isCreating: false,
-    isCreatingFormOpen: false,
-  } satisfies AdminUserCreateState);
+  const {
+    createState,
+    createFormSetVisible,
+    handleEmailChange,
+    handleFileChange,
+    handleNameChange,
+    handlePasswordChange,
+    openCreateForm,
+    createAdminUser,
+  } = useAdminUserCreate();
 
   const adminUserCreateValue: AdminUserCreateValue = {
-    adminUserCreateState: adminUserCreateState,
-    setName: (name) => dispatchCreate({ type: "SET_NAME", name: name }),
-    setNameError: (error) => dispatchCreate({ type: "SET_NAME_ERROR", error: error }),
-
-    setEmail: (email) => dispatchCreate({ type: "SET_EMAIL", email: email }),
-    setEmailError: (error) => dispatchCreate({ type: "SET_EMAIL_ERROR", error: error }),
-
-    setPassword: (password) => dispatchCreate({ type: "SET_PASSWORD", password: password }),
-    setPasswordError: (error) => dispatchCreate({ type: "SET_PASSWORD_ERROR", error: error }),
-
-    setPhotoUrl: (photoUrl) => dispatchCreate({ type: "SET_PHOTO_URL", photoUrl: photoUrl }),
-
-    setCreatingAdminUser: (isLoading) => dispatchCreate({ type: "SET_IS_CREATING", isLoading: isLoading }),
-    openCreateAdminForm: () => dispatchCreate({ type: "OPEN_CREATE_FORM" }),
-    closeCreateAdminForm: () => dispatchCreate({ type: "CLOSE_CREATE_FORM" }),
+    adminUserCreateState: createState,
+    setName: handleNameChange,
+    setEmail: handleEmailChange,
+    setPassword: handlePasswordChange,
+    setImage: handleFileChange,
+    openCreateAdminForm: openCreateForm,
+    createFormSetVisible: createFormSetVisible,
+    createAdminUser: createAdminUser,
   };
 
   return <AdminUserCreateContext.Provider value={adminUserCreateValue}>{children}</AdminUserCreateContext.Provider>;

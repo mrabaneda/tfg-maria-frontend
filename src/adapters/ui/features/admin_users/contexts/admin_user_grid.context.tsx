@@ -14,6 +14,7 @@ import { useAdminUserGrid } from "../hooks/use_admin_user_grid.hook";
 
 interface AdminUserGridValue {
   adminUserGridState: AdminUserGridState;
+  refreshGrid: () => void;
 }
 
 interface AdminUserGridProps {
@@ -27,10 +28,11 @@ interface AdminUserGridProps {
 const AdminUserGridContext = createContext<AdminUserGridValue>({} as AdminUserGridValue);
 
 const AdminUserGridContextProvider: FC<AdminUserGridProps> = ({ children }) => {
-  const { adminUserGridState } = useAdminUserGrid();
+  const { adminUserGridState, refreshGrid } = useAdminUserGrid();
 
   const adminUserGridValue: AdminUserGridValue = {
     adminUserGridState: adminUserGridState,
+    refreshGrid: refreshGrid,
   };
 
   return <AdminUserGridContext.Provider value={adminUserGridValue}>{children}</AdminUserGridContext.Provider>;

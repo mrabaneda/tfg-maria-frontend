@@ -2,18 +2,18 @@
 // Requirements
 // -------------------------------------------------------
 
-import { AppUserEntity } from "@/src/core/domain/entities/app_user.entity";
-import { BaseAuthService } from "@/src/core/domain/ports/services/auth.service";
+import { AdminUserEntity } from "../../domain/entities/admin_user.entity";
+import { BaseAdminUserRepository } from "../../domain/ports/repositories/admin_user.repository";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class SignInUseCase {
-  constructor(private readonly authService: BaseAuthService) {}
+class GetAdminUsersUseCase {
+  constructor(private readonly adminUserRepository: BaseAdminUserRepository) {}
 
-  execute(email: string, password: string): Promise<AppUserEntity> {
-    return this.authService.signIn(email, password);
+  execute(): Promise<AdminUserEntity[]> {
+    return this.adminUserRepository.get();
   }
 }
 
@@ -21,4 +21,4 @@ class SignInUseCase {
 // Public Interface
 // -------------------------------------------------------
 
-export { SignInUseCase };
+export { GetAdminUsersUseCase };

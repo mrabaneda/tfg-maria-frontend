@@ -10,10 +10,9 @@ import { UID } from "@/src/core/domain/value_objects/types";
 
 interface AdminUserModel {
   userId: UID;
-  name: string | null;
-  email: string | null;
-  photoUrl: string | null;
-  createdAt: Date;
+  name: string;
+  email: string;
+  photoUrl: string;
 }
 
 const AdminUserModelSchema: { [K in keyof AdminUserModel]: K } = {
@@ -21,7 +20,6 @@ const AdminUserModelSchema: { [K in keyof AdminUserModel]: K } = {
   name: "name",
   email: "email",
   photoUrl: "photoUrl",
-  createdAt: "createdAt",
 };
 
 // -------------------------------------------------------
