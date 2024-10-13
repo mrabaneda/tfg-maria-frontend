@@ -2,30 +2,23 @@
 // Requirements
 // -------------------------------------------------------
 
-import { UID } from "@/src/core/domain/value_objects/types";
+import { UID } from "../../domain/value_objects/types";
+import { BaseAdminUserRepository } from "../../domain/ports/repositories/admin_user.repository";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface AdminUserModel {
-  uid: UID;
-  name: string;
-  email: string;
-  photoUrl: string;
-}
+class DeleteAdminUsersUseCase {
+  constructor(private readonly adminUserRepository: BaseAdminUserRepository) {}
 
-const AdminUserModelSchema: { [K in keyof AdminUserModel]: K } = {
-  uid: "uid",
-  name: "name",
-  email: "email",
-  photoUrl: "photoUrl",
-};
+  execute(uid: UID): Promise<void> {
+    return this.adminUserRepository.delete(uid);
+  }
+}
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export type { AdminUserModel };
-
-export { AdminUserModelSchema };
+export { DeleteAdminUsersUseCase };

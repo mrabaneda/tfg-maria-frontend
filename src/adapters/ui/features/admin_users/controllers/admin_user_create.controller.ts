@@ -42,7 +42,7 @@ const AdminUserCreateController = (state: AdminUserCreateState, action: AdminUse
     case "OPEN_CREATE_FORM":
       return {
         ...state,
-        isCreatingFormOpen: true,
+        isCreateFormOpen: true,
         isCreating: false,
         name: "",
         nameError: null,
@@ -52,11 +52,11 @@ const AdminUserCreateController = (state: AdminUserCreateState, action: AdminUse
         passwordError: null,
       };
     case "CREATE_FORM_SET_VISIBLE":
-      return { ...state, isCreatingFormOpen: action.isVisible };
+      return { ...state, isCreateFormOpen: action.isVisible };
     case "CLOSE_CREATE_FORM":
       return {
         ...state,
-        isCreatingFormOpen: false,
+        isCreateFormOpen: false,
         isCreating: false,
         name: "",
         nameError: null,

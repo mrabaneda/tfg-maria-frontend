@@ -13,10 +13,10 @@ import { AuthStateEnum } from "../states/auth.state";
 import { HomeIcon } from "../components/icons/home.icon";
 import { UserIcon } from "../components/icons/user.icon";
 import { LogoutIcon } from "../components/icons/logout.icon";
-import IconButton from "../components/button/icon_button";
 import { useSignOut } from "../hooks/sign_out.hook";
 import { useSignOutContext } from "../contexts/sign_out.context";
 import { defaultUserAvatar } from "../helpers/constants";
+import IconButton from "../components/button/icon_button";
 
 // -------------------------------------------------------
 // Helpers

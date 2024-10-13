@@ -9,7 +9,6 @@ import { useMounted } from "../../../shared/hooks/use_mounted";
 import { AdminUserCreateController } from "../controllers/admin_user_create.controller";
 import { AdminUserCreateState } from "../states/admin_user_create.state";
 import { isValidEmail } from "../helpers/utils";
-import { useAdminUserGrid } from "./use_admin_user_grid.hook";
 import { useAdminUserGridContext } from "../contexts/admin_user_grid.context";
 
 // -------------------------------------------------------
@@ -26,7 +25,7 @@ const useAdminUserCreate = () => {
     passwordError: null,
     image: null,
     isCreating: false,
-    isCreatingFormOpen: false,
+    isCreateFormOpen: false,
   } satisfies AdminUserCreateState);
 
   const isMounted = useMounted();

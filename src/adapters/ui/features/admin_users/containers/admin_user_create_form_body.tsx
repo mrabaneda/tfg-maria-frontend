@@ -12,7 +12,7 @@ import { useAdminUserCreateContext } from "../contexts/admin_user_create.context
 
 const AdminUserCreateFormBody: FC = () => {
   const { adminUserCreateState, setEmail, setImage, setName, setPassword } = useAdminUserCreateContext();
-  
+
   return (
     <form className="space-y-4 pb-3 select-none">
       <FormInputText
@@ -45,8 +45,8 @@ const AdminUserCreateFormBody: FC = () => {
         placeholder="Introduce una contraseña"
         isDisabled={adminUserCreateState.isCreating}
       />
-      <input id="image" name="image" type="file" onChange={setImage} accept="image/*" />
       {adminUserCreateState.passwordError && <small className="text-sm text-red-600">{adminUserCreateState.passwordError}</small>}
+      <input id="image" name="image" type="file" onChange={setImage} accept="image/*" />
     </form>
   );
 };

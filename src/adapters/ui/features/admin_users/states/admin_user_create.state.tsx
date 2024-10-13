@@ -9,9 +9,9 @@ interface AdminUserCreateState {
   emailError: string | null;
   password: string;
   passwordError: string | null;
-  image: Blob | null,
+  image: Blob | null;
   isCreating: boolean;
-  isCreatingFormOpen: boolean;
+  isCreateFormOpen: boolean;
 }
 
 // -------------------------------------------------------

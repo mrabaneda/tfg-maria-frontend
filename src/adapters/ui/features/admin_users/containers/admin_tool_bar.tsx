@@ -7,7 +7,7 @@
 import { FC } from "react";
 import Button from "../../../shared/components/button/button";
 import Modal from "../../../shared/components/dialog/modal";
-import AdminUserCreateFormBody from "./admin_user_create_form";
+import AdminUserCreateFormBody from "./admin_user_create_form_body";
 import { useAdminUserGridContext } from "../contexts/admin_user_grid.context";
 import { useAdminUserCreateContext } from "../contexts/admin_user_create.context";
 
@@ -41,10 +41,10 @@ const AdminToolbar: FC<ToolBarProps> = () => {
           isLoading={adminUserCreateState.isCreating}
         />
       </div>
-      {adminUserCreateState.isCreatingFormOpen && (
+      {adminUserCreateState.isCreateFormOpen && (
         <Modal
           title={"Crear nuevo administrador/a"}
-          visible={adminUserCreateState.isCreatingFormOpen}
+          visible={adminUserCreateState.isCreateFormOpen}
           body={<AdminUserCreateFormBody />}
           confirmButtonText="Crear administrador/a"
           confirmButtonColor="bg-[#68C0B8] hover:bg-[#4DAF99]"

@@ -14,7 +14,7 @@ import { AdminUserCreateDto, AdminUserCreateDtoScheme } from "../dtos/admin_user
 class AdminUserFactory {
   static adminUserDtoToEntity(adminUserdto: AdminUserDto): AdminUserEntity {
     return {
-      uid: adminUserdto.userId,
+      uid: adminUserdto.uid,
       name: adminUserdto.name,
       email: adminUserdto.email,
       photoUrl: adminUserdto.photoUrl,
@@ -22,7 +22,6 @@ class AdminUserFactory {
   }
 
   static adminUserCreateModelToFormData(adminUserCreateModel: AdminUserCreateModel): FormData {
-    console.log({adminUserCreateModel});    
     const formData = new FormData();
     formData.append(AdminUserCreateDtoScheme.name, adminUserCreateModel.name);
     formData.append(AdminUserCreateDtoScheme.email, adminUserCreateModel.email);

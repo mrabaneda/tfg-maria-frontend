@@ -26,8 +26,8 @@ const useAdminUserGrid = () => {
   const { getAdminUsersUseCase } = useGetAdminUsersUseCaseContext();
 
   const refreshGrid = useCallback(() => {
-    if(isMounted()) dispatch({ type: "REFRESH_GRID" });
-  },[isMounted]);
+    if (isMounted()) dispatch({ type: "REFRESH_GRID" });
+  }, [isMounted]);
 
   useEffect(() => {
     if (!isMounted()) return;

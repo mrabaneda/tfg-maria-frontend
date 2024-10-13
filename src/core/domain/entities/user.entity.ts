@@ -10,7 +10,7 @@ import { PreferencesTypeEnum } from "../enums/preferences_type.enum";
 // -------------------------------------------------------
 
 interface UserEntity {
-  readonly userId: UID;
+  readonly uid: UID;
   readonly name: string;
   readonly email: string;
   readonly photoUrl: string;

@@ -9,7 +9,7 @@ import { UID } from "@/src/core/domain/value_objects/types";
 // -------------------------------------------------------
 
 interface AdminUserDto {
-  userId: UID;
+  uid: UID;
   name: string;
   email: string;
   photoUrl: string;
