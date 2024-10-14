@@ -97,7 +97,7 @@ const useAdminUserCreate = () => {
       }
 
       if (!state.image) {
-        alert("No hay imagen Jonny");
+        alert("Por favor seleccione una imagen.");
         return;
       }
 

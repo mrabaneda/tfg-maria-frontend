@@ -4,6 +4,7 @@
 
 import { UID } from "../../value_objects/types";
 import { UserEntity } from "../../entities/user.entity";
+import { UserCreateModel } from "../../models/user_create.model";
 
 // -------------------------------------------------------
 // Helpers
@@ -12,6 +13,7 @@ import { UserEntity } from "../../entities/user.entity";
 abstract class BaseUserRepository {
   abstract get(): Promise<UserEntity[]>;
   abstract delete(uid: UID): Promise<void>;
+  abstract create(createModel: UserCreateModel): Promise<void>;
 }
 
 // -------------------------------------------------------

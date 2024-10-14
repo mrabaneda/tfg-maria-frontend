@@ -12,6 +12,7 @@ import UserItem from "./user_item";
 import UserToolbar from "./user_tool_bar";
 import { useUserDeleteContext } from "../contexts/user_delete.context";
 import Modal from "../../../shared/components/dialog/modal";
+import { UserCreateContextProvider } from "../contexts/user_create.context";
 
 // -------------------------------------------------------
 // Helpers
@@ -29,7 +30,9 @@ const UserGrid: React.FC = () => {
   ) : (
     // TODO: reorganize contexts and components
     <div className="p-[30px]">
-      <UserToolbar />
+      <UserCreateContextProvider>
+        <UserToolbar />
+      </UserCreateContextProvider>
       <table className="mt-[20px] w-full">
         <thead>
           <tr>
