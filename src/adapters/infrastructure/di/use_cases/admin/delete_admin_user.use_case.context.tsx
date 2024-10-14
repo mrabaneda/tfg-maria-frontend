@@ -6,17 +6,17 @@
 
 import { createContext, FC, useContext } from "react";
 import { useAdminRepositoryContext } from "../../repositories/admin_user_repository.context";
-import { DeleteAdminUsersUseCase } from "@/src/core/use_cases/admin/delete_admin.use_case";
+import { DeleteAdminUserUseCase } from "@/src/core/use_cases/admin/delete_admin.use_case";
 
 // -------------------------------------------------------
 // Models
 // -------------------------------------------------------
 
-interface DeleteAdminUsersUseCaseContextValue {
-  deleteAdminUsersUseCase: DeleteAdminUsersUseCase;
+interface DeleteAdminUserUseCaseContextValue {
+  deleteAdminUsersUseCase: DeleteAdminUserUseCase;
 }
 
-interface DeleteAdminUsersUseCaseProviderProps {
+interface DeleteAdminUserUseCaseProviderProps {
   children: React.ReactNode;
 }
 
@@ -24,15 +24,15 @@ interface DeleteAdminUsersUseCaseProviderProps {
 // Helpers
 // -------------------------------------------------------
 
-const useDeleteAdminUsersUseCaseContext = () => useContext(DeleteAdminUsersUseCaseContext);
+const useDeleteAdminUserUseCaseContext = () => useContext(DeleteAdminUsersUseCaseContext);
 
-const DeleteAdminUsersUseCaseContext = createContext<DeleteAdminUsersUseCaseContextValue>({} as DeleteAdminUsersUseCaseContextValue);
+const DeleteAdminUsersUseCaseContext = createContext<DeleteAdminUserUseCaseContextValue>({} as DeleteAdminUserUseCaseContextValue);
 
-const DeleteAdminUsersUseCaseProvider: FC<DeleteAdminUsersUseCaseProviderProps> = ({ children }) => {
+const DeleteAdminUserUseCaseProvider: FC<DeleteAdminUserUseCaseProviderProps> = ({ children }) => {
   const { adminUserRepository } = useAdminRepositoryContext();
 
-  const deleteAdminUsersUseCaseContextValue: DeleteAdminUsersUseCaseContextValue = {
-    deleteAdminUsersUseCase: new DeleteAdminUsersUseCase(adminUserRepository),
+  const deleteAdminUsersUseCaseContextValue: DeleteAdminUserUseCaseContextValue = {
+    deleteAdminUsersUseCase: new DeleteAdminUserUseCase(adminUserRepository),
   };
 
   return <DeleteAdminUsersUseCaseContext.Provider value={deleteAdminUsersUseCaseContextValue}>{children}</DeleteAdminUsersUseCaseContext.Provider>;
@@ -42,4 +42,4 @@ const DeleteAdminUsersUseCaseProvider: FC<DeleteAdminUsersUseCaseProviderProps> 
 // Public Interface
 // -------------------------------------------------------
 
-export { useDeleteAdminUsersUseCaseContext, DeleteAdminUsersUseCaseProvider };
+export { useDeleteAdminUserUseCaseContext, DeleteAdminUserUseCaseProvider };

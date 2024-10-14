@@ -38,6 +38,9 @@ const SignInForm: FC = () => {
         isDisabled={isLoading}
         style="mb-[20px]"
       ></FormInputText>
+      {
+        // TODO: be able to see passwd
+      }
       <FormInputText
         id="password"
         value={password}
@@ -49,6 +52,9 @@ const SignInForm: FC = () => {
         style="mb-[40px]"
         type="password"
       ></FormInputText>
+      {
+        // TODO: be able to REPEAT passwd
+      }
       <Button
         text="Iniciar Sesión"
         isLoading={isLoading}

@@ -10,6 +10,8 @@ import TableHeader from "../../../shared/components/table_header";
 import { useUserGridContext } from "../contexts/user_grid.context";
 import UserItem from "./user_item";
 import UserToolbar from "./user_tool_bar";
+import { useUserDeleteContext } from "../contexts/user_delete.context";
+import Modal from "../../../shared/components/dialog/modal";
 
 // -------------------------------------------------------
 // Helpers
@@ -19,6 +21,8 @@ const UserGrid: React.FC = () => {
   const {
     userGridState: { userList, isLoading },
   } = useUserGridContext();
+
+  const { userDeleteState, deleteModalSetVisible, deleteUser } = useUserDeleteContext();
 
   return isLoading ? (
     <LoadingScreen />
@@ -32,25 +36,33 @@ const UserGrid: React.FC = () => {
             <TableHeader title={""} />
             <TableHeader title={"Nombre"} />
             <TableHeader title={"Email"} />
+            <TableHeader title={"Preferencia"} />
           </tr>
         </thead>
         <tbody>
           {userList?.map((user, i) => (
-            <UserItem key={i} itemId={user.uid as UID} itemName={user.name} itemEmail={user.email} itemPhotoUrl={user.photoUrl} />
+            <UserItem
+              key={i}
+              itemId={user.uid as UID}
+              itemName={user.name}
+              itemEmail={user.email}
+              itemPhotoUrl={user.photoUrl}
+              itemPreference={user.preference}
+            />
           ))}
         </tbody>
       </table>
-      {/* {adminUserDeleteState.isDeleteModalOpen && (
+      {userDeleteState.isDeleteModalOpen && (
         <Modal
-          title={"Borrar administrador/a"}
-          visible={adminUserDeleteState.isDeleteModalOpen}
-          body={`Estás seguro/a de eliminar al administrador/a? con nombre: ${adminUserDeleteState.adminName}`}
-          confirmButtonText="Borrar administrador/a"
-          isLoading={adminUserDeleteState.isDeleting}
+          title={"Borrar usuario/a"}
+          visible={userDeleteState.isDeleteModalOpen}
+          body={`Estás seguro/a de eliminar al usuario/a? con nombre: ${userDeleteState.userName}`}
+          confirmButtonText="Borrar usuario/a"
+          isLoading={userDeleteState.isDeleting}
           setVisible={deleteModalSetVisible}
-          onSubmit={deleteAdminUser}
+          onSubmit={deleteUser}
         />
-      )} */}
+      )}
     </div>
   );
 };

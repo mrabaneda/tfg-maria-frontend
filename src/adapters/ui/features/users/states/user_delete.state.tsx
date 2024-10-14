@@ -2,23 +2,21 @@
 // Requirements
 // -------------------------------------------------------
 
-import { UID } from "../../domain/value_objects/types";
-import { BaseAdminUserRepository } from "../../domain/ports/repositories/admin_user.repository";
+import { UID } from "@/src/core/domain/value_objects/types";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class DeleteAdminUserUseCase {
-  constructor(private readonly adminUserRepository: BaseAdminUserRepository) {}
-
-  execute(uid: UID): Promise<void> {
-    return this.adminUserRepository.delete(uid);
-  }
+interface UserDeleteState {
+  uid: UID | null;
+  userName: string | null;
+  isDeleting: boolean;
+  isDeleteModalOpen: boolean;
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export { DeleteAdminUserUseCase };
+export type { UserDeleteState };

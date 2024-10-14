@@ -3,17 +3,17 @@
 // -------------------------------------------------------
 
 import { UID } from "../../domain/value_objects/types";
-import { BaseAdminUserRepository } from "../../domain/ports/repositories/admin_user.repository";
+import { BaseUserRepository } from "../../domain/ports/repositories/user.repository";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-class DeleteAdminUserUseCase {
-  constructor(private readonly adminUserRepository: BaseAdminUserRepository) {}
+class DeleteUserUseCase {
+  constructor(private readonly userRepository: BaseUserRepository) {}
 
   execute(uid: UID): Promise<void> {
-    return this.adminUserRepository.delete(uid);
+    return this.userRepository.delete(uid);
   }
 }
 
@@ -21,4 +21,4 @@ class DeleteAdminUserUseCase {
 // Public Interface
 // -------------------------------------------------------
 
-export { DeleteAdminUserUseCase };
+export { DeleteUserUseCase };

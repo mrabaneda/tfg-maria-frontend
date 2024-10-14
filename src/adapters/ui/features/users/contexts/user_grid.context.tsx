@@ -6,7 +6,7 @@
 
 import { createContext, FC, ReactNode, useContext } from "react";
 import { UserGridState } from "../states/user_grid.state";
-import { useUserGrid } from "../hooks/user_grid.hook";
+import { useUserGrid } from "../hooks/use_user_grid.hook";
 
 // -------------------------------------------------------
 // Models

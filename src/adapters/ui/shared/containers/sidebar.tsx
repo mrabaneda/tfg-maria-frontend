@@ -65,6 +65,9 @@ const Sidebar: FC = () => {
             </div>
           </Link>
         </div>
+        {
+          // TODO: whole cerrar sesion button
+        }
         <div className="logout text-center">
           <div className="flex items-center  text-teal-500 px-4 py-2 rounded-md">
             <div className="flex items-center gap-[15px]">
