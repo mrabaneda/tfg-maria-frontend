@@ -52,7 +52,7 @@ const Sidebar: FC = () => {
               <p className="m-0 text-md text-black leading-none relative top-[2.4px] select-none">Inicio</p>
             </div>
           </Link>
-          <Link href={AppRoutes.appUsers} className=" w-full">
+          <Link href={AppRoutes.users} className=" w-full">
             <div className="flex gap-[5px] items-center bg-white text-teal-500 px-4 py-2 rounded-md hover:bg-[#68C0B8] w-full ">
               <UserIcon />
               <p className="m-0 text-md text-black leading-none relative top-[2.4px] select-none">Usuarios</p>

@@ -5,7 +5,7 @@
 import { AdminUserEntity } from "@/src/core/domain/entities/admin_user.entity";
 import { AdminUserCreateModel } from "@/src/core/domain/models/admin_user_create.model";
 import { AdminUserDto } from "../dtos/admin_user.dto";
-import { AdminUserCreateDto, AdminUserCreateDtoScheme } from "../dtos/admin_user_create.dto";
+import { AdminUserCreateDtoScheme } from "../dtos/admin_user_create.dto";
 
 // -------------------------------------------------------
 // Helpers

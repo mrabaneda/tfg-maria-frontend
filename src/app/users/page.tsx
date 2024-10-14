@@ -10,14 +10,14 @@ import { LoadingScreen } from "../../adapters/ui/shared/components/loading_scree
 // Requirements
 // -------------------------------------------------------
 
-const AppUsersModule = dynamic(() => import("../../adapters/ui/features/app_users/app_users"), {
+const UsersModule = dynamic(() => import("../../adapters/ui/features/users/users"), {
   loading: () => <LoadingScreen />,
 });
 
-const AppUsersPage: FC = () => <AppUsersModule />;
+const UsersPage: FC = () => <UsersModule />;
 
 // -------------------------------------------------------
 // Requirements
 // -------------------------------------------------------
 
-export default AppUsersPage;
+export default UsersPage;

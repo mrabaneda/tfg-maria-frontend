@@ -9,7 +9,6 @@ import { AdminUserCreateModel } from "@/src/core/domain/models/admin_user_create
 import { BaseAdminUserRepository } from "@/src/core/domain/ports/repositories/admin_user.repository";
 import { axiosInstance } from "../services/axios.service";
 import { AdminUserFactory } from "../factory/admin_user.factory";
-import { AdminUserDto } from "../dtos/admin_user.dto";
 
 // -------------------------------------------------------
 // Helpers

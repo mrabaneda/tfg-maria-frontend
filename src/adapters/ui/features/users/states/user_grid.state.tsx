@@ -2,18 +2,21 @@
 // Requirements
 // -------------------------------------------------------
 
-"use client";
+import { UserModel } from "../models/user.model";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-const AppUsers: React.FC = () => {
-  return <h1>HOLA AQUI USERS DE LA APP jiji</h1>;
-};
+interface UserGridState {
+  userList: UserModel[] | null;
+  isLoading: boolean;
+  error: string | null;
+  refreshGrid: number;
+}
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export default AppUsers;
+export type { UserGridState };
