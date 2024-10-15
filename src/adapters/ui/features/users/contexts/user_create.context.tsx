@@ -16,6 +16,7 @@ interface UserCreateValue {
   userCreateState: UserCreateState;
   setKeyWord: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setPreference: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   setImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setImage1: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setImage2: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -41,6 +42,7 @@ const UserCreateContextProvider: FC<UserCreateProps> = ({ children }) => {
     createState,
     handleKeyWordChange,
     handleNameChange,
+    handlePreferenceChange,
     handleFileChange,
     handleFileChange1,
     handleFileChange2,
@@ -55,6 +57,7 @@ const UserCreateContextProvider: FC<UserCreateProps> = ({ children }) => {
     userCreateState: createState,
     setKeyWord: handleKeyWordChange,
     setName: handleNameChange,
+    setPreference: handlePreferenceChange,
     setImage: handleFileChange,
     setImage1: handleFileChange1,
     setImage2: handleFileChange2,

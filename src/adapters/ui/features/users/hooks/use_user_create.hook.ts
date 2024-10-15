@@ -39,17 +39,16 @@ const useUserCreate = () => {
   const { createUsersUseCase } = useCreateUserUseCaseContext();
 
   const handleKeyWordChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    if (isMounted()) dispatch({ type: "SET_KEYWORD", keyWord: target.value });
+    if (isMounted()) dispatch({ type: "SET_KEYWORD", keyWord: target.value.trim().split(" ").join("") });
   };
 
   const handleNameChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     if (isMounted()) dispatch({ type: "SET_NAME", name: target.value });
   };
 
-  // TODO: section selection
-  // const handlePreferenceChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (isMounted()) dispatch({ type: "SET_PREFERENCE", preference: target.value });
-  // };
+  const handlePreferenceChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+    if (isMounted()) dispatch({ type: "SET_PREFERENCE", preference: target.value as PreferencesTypeEnum });
+  };
 
   const handleFileChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const files = target.files;
@@ -119,27 +118,27 @@ const useUserCreate = () => {
       }
 
       if (!state.image) {
-        alert("Por favor seleccione una imagen.");
+        alert("Por favor seleccione una foto de perfil para el usuario/a.");
         return;
       }
 
       if (!state.image1) {
-        alert("Por favor seleccione una imagen.");
+        alert("Por favor seleccione una primera foto para la contraseña.");
         return;
       }
 
       if (!state.image2) {
-        alert("Por favor seleccione una imagen.");
+        alert("Por favor seleccione una segunda foto para la contraseña.");
         return;
       }
 
       if (!state.image3) {
-        alert("Por favor seleccione una imagen.");
+        alert("Por favor seleccione una tercera foto para la contraseña.");
         return;
       }
 
       if (!state.image4) {
-        alert("Por favor seleccione una imagen.");
+        alert("Por favor seleccione una cuarta foto para la contraseña.");
         return;
       }
 
@@ -179,6 +178,7 @@ const useUserCreate = () => {
     handleKeyWordChange,
     handleNameChange,
     handleFileChange,
+    handlePreferenceChange,
     handleFileChange1,
     handleFileChange2,
     handleFileChange3,

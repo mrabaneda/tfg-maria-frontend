@@ -61,6 +61,7 @@ const UserGrid: React.FC = () => {
           visible={userDeleteState.isDeleteModalOpen}
           body={`Estás seguro/a de eliminar al usuario/a? con nombre: ${userDeleteState.userName}`}
           confirmButtonText="Borrar usuario/a"
+          confirmButtonColor="bg-red-600 hover:bg-red-700"
           isLoading={userDeleteState.isDeleting}
           setVisible={deleteModalSetVisible}
           onSubmit={deleteUser}

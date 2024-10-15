@@ -59,6 +59,7 @@ const AdminUserGrid: React.FC = () => {
           visible={adminUserDeleteState.isDeleteModalOpen}
           body={`Estás seguro/a de eliminar al administrador/a? con nombre: ${adminUserDeleteState.adminName}`}
           confirmButtonText="Borrar administrador/a"
+          confirmButtonColor="bg-red-600 hover:bg-red-700"
           isLoading={adminUserDeleteState.isDeleting}
           setVisible={deleteModalSetVisible}
           onSubmit={deleteAdminUser}

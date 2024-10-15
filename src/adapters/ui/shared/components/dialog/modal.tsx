@@ -74,6 +74,7 @@ const Modal: React.FC<ModalProps> = ({
       <div
         className={combineClasses(
           "w-full h-auto max-w-[550px] mx-auto bg-white rounded-md relative ease-in-out duration-300",
+          "max-h-[90vh] overflow-y-auto",
           visible ? "opacity-1 visible translate-y-0" : "opacity-0 invisible translate-y-[-100px]"
         )}
       >

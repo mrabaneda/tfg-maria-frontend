@@ -18,7 +18,6 @@ interface UserIconProps {
 // Helpers
 // -------------------------------------------------------
 
-// TODO: revisar size
 const UserIcon: FC<UserIconProps> = ({ color = "black", classNames = "h-6 w-6" }) => {
   return (
     <svg viewBox="0 0 64 64" fill="none" className={classNames}>

@@ -5,6 +5,7 @@
 import { FC } from "react";
 import FormInputText from "../../../shared/components/input/form_input_text";
 import { useAdminUserCreateContext } from "../contexts/admin_user_create.context";
+import FormInputImage from "../../../shared/components/input/form_input_image";
 
 // -------------------------------------------------------
 // Helpers
@@ -46,7 +47,12 @@ const AdminUserCreateFormBody: FC = () => {
         isDisabled={adminUserCreateState.isCreating}
       />
       {adminUserCreateState.passwordError && <small className="text-sm text-red-600">{adminUserCreateState.passwordError}</small>}
-      <input id="image" name="image" type="file" onChange={setImage} accept="image/*" />
+      <FormInputImage
+        label="Seleccione una foto de perfil para el nuevo administrador/a"
+        id="image"
+        name="image"
+        onChange={setImage}
+      ></FormInputImage>
     </form>
   );
 };

@@ -35,6 +35,9 @@ const Sidebar: FC = () => {
     return (
       <div className="flex flex-col justify-between min-h-screen bg-[#FFE9A7] p-8 w-1/5 min-w-[250px]">
         <div className="header flex flex-col justify-center items-center">
+          <p className="text-black text-center text-l font-bold mb-10 select-none shadow-md p-2 bg-[rgb(243,157,166)] rounded-lg">
+            Panel de Administradores
+          </p>
           <Image
             className="max-w-28 w-full h-28 rounded-full mb-8 select-none"
             src={authState.appUser.photoUrl ?? defaultUserAvatar}
@@ -42,8 +45,8 @@ const Sidebar: FC = () => {
             width={120}
             height={120}
           />
-          <p className="text-center text-lg font-normal text-black mb-4 select-none">{authState.appUser.name}</p>
-          <p className="text-sm text-black select-none">Admin</p>
+          <p className="text-center text-lg font-normal text-black mb-6 select-none">{authState.appUser.name}</p>
+          <p className="text-sm text-black  mb-6 select-none">{authState.appUser.email}</p>
         </div>
         <div className="navigation flex flex-col gap-4">
           <Link href={"/"} className=" w-full">
@@ -65,14 +68,11 @@ const Sidebar: FC = () => {
             </div>
           </Link>
         </div>
-        {
-          // TODO: whole cerrar sesion button
-        }
         <div className="logout text-center">
-          <div className="flex items-center  text-teal-500 px-4 py-2 rounded-md">
+          <div className="flex items-center  text-teal-500 px-4 py-2 rounded-md cursor-pointer" onClick={openSignOutModal}>
             <div className="flex items-center gap-[15px]">
               <p className="m-0 text-md text-[#FF0000] leading-none relative select-none">Cerrar sesión</p>
-              <IconButton icon={<LogoutIcon color="#FF0000" />} onClick={openSignOutModal} isDisabled={isSigningOut} />
+              <IconButton icon={<LogoutIcon color="#FF0000" />} isDisabled={isSigningOut} />
             </div>
           </div>
         </div>

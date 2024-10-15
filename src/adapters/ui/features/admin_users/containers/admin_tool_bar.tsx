@@ -10,6 +10,7 @@ import Modal from "../../../shared/components/dialog/modal";
 import AdminUserCreateFormBody from "./admin_user_create_form_body";
 import { useAdminUserGridContext } from "../contexts/admin_user_grid.context";
 import { useAdminUserCreateContext } from "../contexts/admin_user_create.context";
+import { useAdminUserDeleteContext } from "../contexts/admin_user_delete.context";
 
 // -------------------------------------------------------
 // Models
@@ -28,6 +29,10 @@ const AdminToolbar: FC<ToolBarProps> = () => {
 
   const { adminUserCreateState, openCreateAdminForm, createFormSetVisible, createAdminUser } = useAdminUserCreateContext();
 
+  const {
+    adminUserDeleteState: { isDeleting },
+  } = useAdminUserDeleteContext();
+
   return (
     <>
       <div className="flex w-full items-center justify-between border-b-[1px] border-b-[#E5E5E5] pb-[12px] select-none">
@@ -37,7 +42,7 @@ const AdminToolbar: FC<ToolBarProps> = () => {
           textColor="text-[#FFFFFF]"
           text={"Añadir administrador"}
           onClick={openCreateAdminForm}
-          isDisabled={isLoading || adminUserCreateState.isCreating}
+          isDisabled={isLoading || adminUserCreateState.isCreating || isDeleting}
           isLoading={adminUserCreateState.isCreating}
         />
       </div>

@@ -10,6 +10,7 @@ import Modal from "../../../shared/components/dialog/modal";
 import { useUserGridContext } from "../contexts/user_grid.context";
 import { useUserCreateContext } from "../contexts/user_create.context";
 import UserCreateFormBody from "./user_create_form_body";
+import { useUserDeleteContext } from "../contexts/user_delete.context";
 
 // -------------------------------------------------------
 // Models
@@ -27,6 +28,9 @@ const UserToolbar: FC<ToolBarProps> = () => {
   } = useUserGridContext();
 
   const { userCreateState, openCreateUserForm, createFormSetVisible, createUser } = useUserCreateContext();
+  const {
+    userDeleteState: { isDeleting },
+  } = useUserDeleteContext();
 
   return (
     <>
@@ -37,7 +41,7 @@ const UserToolbar: FC<ToolBarProps> = () => {
           textColor="text-[#FFFFFF]"
           text={"Añadir usuario"}
           onClick={openCreateUserForm}
-          isDisabled={userCreateState.isCreating || isLoading}
+          isDisabled={userCreateState.isCreating || isLoading || isDeleting}
           isLoading={userCreateState.isCreating}
         />
       </div>
