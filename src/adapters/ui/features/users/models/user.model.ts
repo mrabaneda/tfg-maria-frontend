@@ -4,6 +4,7 @@
 
 import { UID } from "@/src/core/domain/value_objects/types";
 import { PreferencesTypeEnum } from "@/src/core/domain/enums/preferences_type.enum";
+import { LoginPasswordVO } from "@/src/core/domain/value_objects/login_password.vo";
 
 // -------------------------------------------------------
 // Helpers
@@ -15,6 +16,7 @@ interface UserModel {
   email: string;
   photoUrl: string;
   preference: PreferencesTypeEnum;
+  password: LoginPasswordVO[] | null;
 }
 
 const UserModelSchema: { [K in keyof UserModel]: K } = {
@@ -23,6 +25,7 @@ const UserModelSchema: { [K in keyof UserModel]: K } = {
   email: "email",
   photoUrl: "photoUrl",
   preference: "preference",
+  password: "password",
 };
 
 // -------------------------------------------------------

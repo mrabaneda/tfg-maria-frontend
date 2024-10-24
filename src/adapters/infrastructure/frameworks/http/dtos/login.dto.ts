@@ -2,23 +2,24 @@
 // Requirements
 // -------------------------------------------------------
 
-import { LoginEntity } from "@/src/core/domain/entities/login.entity";
-import { UserModel } from "../models/user.model";
+import { UID } from "@/src/core/domain/value_objects/types";
+import { LoginPasswordDto } from "./login_password.dto";
 
 // -------------------------------------------------------
 // Helpers
 // -------------------------------------------------------
 
-interface UserGridState {
-  userList: UserModel[] | null;
-  userPasswords: LoginEntity[] | null;
-  isLoading: boolean;
-  error: string | null;
-  refreshGrid: number;
+interface LoginDto {
+  uid: UID;
+  email: string;
+  photoUrl: string;
+  photoRelativePath: string;
+  photoName: string;
+  passwordModel: LoginPasswordDto[];
 }
 
 // -------------------------------------------------------
 // Public Interface
 // -------------------------------------------------------
 
-export type { UserGridState };
+export type { LoginDto };

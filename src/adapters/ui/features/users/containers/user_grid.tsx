@@ -20,7 +20,7 @@ import { UserCreateContextProvider } from "../contexts/user_create.context";
 
 const UserGrid: React.FC = () => {
   const {
-    userGridState: { userList, isLoading },
+    userGridState: { userList, isLoading, userPasswords },
   } = useUserGridContext();
 
   const { userDeleteState, deleteModalSetVisible, deleteUser } = useUserDeleteContext();
@@ -38,7 +38,7 @@ const UserGrid: React.FC = () => {
           <tr>
             <TableHeader title={""} />
             <TableHeader title={"Nombre"} />
-            <TableHeader title={"Email"} />
+            <TableHeader title={"Contraseña"} />
             <TableHeader title={"Preferencia"} />
           </tr>
         </thead>
@@ -48,9 +48,9 @@ const UserGrid: React.FC = () => {
               key={i}
               itemId={user.uid as UID}
               itemName={user.name}
-              itemEmail={user.email}
               itemPhotoUrl={user.photoUrl}
               itemPreference={user.preference}
+              loginPasswords={userPasswords?.at(i) ?? null}
             />
           ))}
         </tbody>

@@ -149,8 +149,8 @@ const useUserCreate = () => {
           .randomBytes(6)
           .toString("base64")
           .slice(0, 6)
-          .replace(/[^a-zA-Z0-9]/g, ""),
-        preference: PreferencesTypeEnum.NONE, // TODO: manage preference,
+          .replace(/[^a-zA-Z0-9]/g, "A"),
+        preference: state.preference ?? PreferencesTypeEnum.NONE,
         image: state.image,
         image1: state.image1,
         image2: state.image2,

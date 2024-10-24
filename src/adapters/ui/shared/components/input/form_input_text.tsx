@@ -51,6 +51,7 @@ const FormInputText: FC<FormInputTextProps> = ({
         value={value}
         onChange={onChange}
         disabled={isDisabled}
+        autoComplete="off"
         className={combineClasses("w-full px-3 py-2 border rounded-md", style ?? "")}
       />
       {error && <p className="text-red-500 text-sm mt-3 font-bold">{error}</p>}

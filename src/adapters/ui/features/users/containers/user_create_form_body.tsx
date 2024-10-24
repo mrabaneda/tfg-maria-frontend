@@ -29,8 +29,8 @@ const UserCreateFormBody: FC = () => {
       />
       {userCreateState.nameError && <small className="text-sm text-red-600">{userCreateState.nameError}</small>}
       <FormInputText
-        id="name"
-        name="name"
+        id="keyWord"
+        name="keyWord"
         label="Palabra clave del usuario/a"
         value={userCreateState.keyWord}
         onChange={setKeyWord}
