@@ -6,6 +6,7 @@ enum AppRoutes {
   home = "home",
   adminUsers = "admin-users",
   users = "users",
+  taks = "tasks",
 }
 
 // -------------------------------------------------------
