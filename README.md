@@ -1,6 +1,6 @@
 # Frontend Trabajo Fin de Grado
 
-### Aplicación de Gestión Accesible para la Asociación VALE
+### Aplicación Accesible de apoyo a realización de actividades para la Asociación VALE
 
 ## 🚀 Tecnologías Usadas
 
