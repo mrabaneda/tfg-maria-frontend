@@ -1,4 +1,4 @@
-# Frontend Trabajo Fin de Grado
+# Aplicación Web Trabajo Fin de Grado
 
 ### Aplicación Accesible de apoyo a realización de actividades para la Asociación VALE
 
