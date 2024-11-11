@@ -30,10 +30,10 @@ const TasksToolbar: FC<ToolBarProps> = () => {
       </div>
       {isCreateModalWanted && (
         <Modal
-          title={"Crear nuevo Usuario/a"}
+          title={"Crear nueva tarea"}
           visible={isCreateModalWanted}
           body={<TaskCreateFormBody />}
-          confirmButtonText="Crear usuario/a"
+          confirmButtonText="Crear tarea"
           confirmButtonColor="bg-[#68C0B8] hover:bg-[#4DAF99]"
           isLoading={false}
           setVisible={() => {}}
